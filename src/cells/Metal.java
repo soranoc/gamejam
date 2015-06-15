@@ -1,14 +1,15 @@
 package cells;
 
-public class Bois extends Cellule {
-	public Bois() {
-		setPoids(1);
-		// setSprite("URL");
-	}
+public class Metal extends Cellule {
 
 	@Override
 	public boolean isBranche() {
 		return false;
+	}
+
+	@Override
+	public boolean isBloc() {
+		return true;
 	}
 
 	@Override
@@ -18,7 +19,7 @@ public class Bois extends Cellule {
 
 	@Override
 	public boolean isBois() {
-		return true;
+		return false;
 	}
 
 	@Override
@@ -28,17 +29,12 @@ public class Bois extends Cellule {
 
 	@Override
 	public boolean isMetal() {
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isVerre() {
 		return false;
-	}
-
-	@Override
-	public boolean isBloc() {
-		return true;
 	}
 
 }
