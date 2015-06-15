@@ -45,8 +45,12 @@ public class Vide extends Cellule {
 
 	@Override
 	public int getPoids() {
-		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public boolean isBase() {
+		return false;
 	}
 
 }

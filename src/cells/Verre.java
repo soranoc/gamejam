@@ -55,4 +55,9 @@ public class Verre extends Cellule {
 		return 0;
 	}
 
+	@Override
+	public boolean isBase() {
+		return false;
+	}
+
 }

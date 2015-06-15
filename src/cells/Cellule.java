@@ -62,6 +62,8 @@ public abstract class Cellule extends JPanel{
 	 */
 	public abstract boolean isVerre();
 
+	public abstract boolean isBase();
+	
 	public int getX() {
 		return x;
 	}

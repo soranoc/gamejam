@@ -55,4 +55,9 @@ public class Pierre extends Cellule {
 		return 2;
 	}
 
+	@Override
+	public boolean isBase() {
+		return false;
+	}
+
 }

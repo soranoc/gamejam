@@ -104,5 +104,9 @@ public class SegmentBranche extends Cellule {
 	public int getPoids() {
 		return 0;
 	}
+	@Override
+	public boolean isBase() {
+		return false;
+	}
 
 }
