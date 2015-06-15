@@ -1,25 +1,25 @@
 package cells;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+public class Base extends Cellule {
 
-
-public class Bois extends Cellule {
-	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-
-	public Bois (int x, int y){
-		super(x,y);
-		add(new JLabel(new ImageIcon("./res/bloc_bois.png")));
+	@Override
+	public int getPoids() {
+		return 1;
 	}
-	
+
 	@Override
 	public boolean isBranche() {
 		return false;
+	}
+
+	@Override
+	public boolean isBloc() {
+		return true;
 	}
 
 	@Override
@@ -29,7 +29,7 @@ public class Bois extends Cellule {
 
 	@Override
 	public boolean isBois() {
-		return true;
+		return false;
 	}
 
 	@Override
@@ -48,20 +48,8 @@ public class Bois extends Cellule {
 	}
 
 	@Override
-	public boolean isBloc() {
+	public boolean isBase() {
 		return true;
 	}
-
-
-	@Override
-	public int getPoids() {
-		return 1;
-	}
-
-	@Override
-	public boolean isBase() {
-		return false;
-	}
-
 
 }

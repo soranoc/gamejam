@@ -55,4 +55,9 @@ public class Metal extends Cellule {
 		return 4;
 	}
 
+	@Override
+	public boolean isBase() {
+		return false;
+	}
+
 }
