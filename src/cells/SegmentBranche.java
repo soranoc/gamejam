@@ -19,7 +19,7 @@ public class SegmentBranche extends Cellule {
 	 */
 	public SegmentBranche(int x, int y){
 		super(x,y);
-		add(new JLabel(new ImageIcon("./res/branche.png")));
+		add(new JLabel(new ImageIcon("./res/branche.jpg")));
 		cells = new Cellule[y];
 		remplirCells();
 	}
