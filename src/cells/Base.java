@@ -1,11 +1,19 @@
 package cells;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 public class Base extends Cellule {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
+	public Base(int x, int y) {
+		super(x, y);
+		add(new JLabel(new ImageIcon("./res/bloc_base.png")));
+	}
 
 	@Override
 	public int getPoids() {

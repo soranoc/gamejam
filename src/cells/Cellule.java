@@ -1,5 +1,7 @@
 package cells;
 
+import java.awt.Dimension;
+
 import javax.swing.JPanel;
 
 
@@ -17,6 +19,8 @@ public abstract class Cellule extends JPanel{
 	public Cellule(int x, int y){
 		this.setX(x);
 		this.setY(y);
+		this.setPreferredSize(new Dimension(20,20));
+		setVisible(true);
 	}
 	
 	abstract public int getPoids();
