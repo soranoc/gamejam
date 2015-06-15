@@ -1,5 +1,7 @@
 package grille;
 
+import utils.Properties;
+import affichage.Plateau;
 import cells.*;
 
 public class Grille {
@@ -8,10 +10,10 @@ public class Grille {
 	private Branche brancheDroite;
 
 	public Grille (){
-		grille = new Cellule[18][12];
+		grille = new Cellule[Properties.HEIGHT][Properties.WIDTH];
 		for (int i = 0; i < grille.length; i++) {
 			for (int j = 0; j < grille[0].length; j++) {
-				grille[i][j] = new Vide();
+				grille[i][j] = new Vide(i,j);
 			}
 		}
 		brancheDroite = new Branche(30);
@@ -25,17 +27,17 @@ public class Grille {
 	
 	private void getExemple(){
 		// Branche Gauche
-		SegmentBranche seg1 = new SegmentBranche(1,5);
-		SegmentBranche seg2 = new SegmentBranche(1,6);
-		SegmentBranche seg3 = new SegmentBranche(2,7);
-		SegmentBranche seg4 = new SegmentBranche(3,7);
-		SegmentBranche seg5 = new SegmentBranche(4,8);
-		SegmentBranche seg6 = new SegmentBranche(4,9);
-		SegmentBranche seg7 = new SegmentBranche(5,10);
-		SegmentBranche seg8 = new SegmentBranche(6,9);
-		SegmentBranche seg9 = new SegmentBranche(7,9);
-		SegmentBranche seg10 = new SegmentBranche(7,10);
-		SegmentBranche seg11 = new SegmentBranche(7,11);
+		SegmentBranche seg1 = new SegmentBranche(5,1);
+		SegmentBranche seg2 = new SegmentBranche(6,1);
+		SegmentBranche seg3 = new SegmentBranche(7,2);
+		SegmentBranche seg4 = new SegmentBranche(7,3);
+		SegmentBranche seg5 = new SegmentBranche(8,4);
+		SegmentBranche seg6 = new SegmentBranche(9,4);
+		SegmentBranche seg7 = new SegmentBranche(10,5);
+		SegmentBranche seg8 = new SegmentBranche(9,6);
+		SegmentBranche seg9 = new SegmentBranche(9,7);
+		SegmentBranche seg10 = new SegmentBranche(10,7);
+		SegmentBranche seg11 = new SegmentBranche(11,7);
 		brancheGauche.ajouterSegment(seg1);
 		brancheGauche.ajouterSegment(seg2);
 		brancheGauche.ajouterSegment(seg3);
@@ -60,14 +62,14 @@ public class Grille {
 		setSegment(seg11.getX(), seg11.getY());
 		
 		// Branche Droite
-		SegmentBranche seg12 = new SegmentBranche(10,11);
+		SegmentBranche seg12 = new SegmentBranche(11,10);
 		SegmentBranche seg13 = new SegmentBranche(11,11);
-		SegmentBranche seg14 = new SegmentBranche(12,10);
-		SegmentBranche seg15 = new SegmentBranche(13,9);
-		SegmentBranche seg16 = new SegmentBranche(13,8);
-		SegmentBranche seg17 = new SegmentBranche(14,8);
-		SegmentBranche seg18 = new SegmentBranche(15,8);
-		SegmentBranche seg19 = new SegmentBranche(16,9);
+		SegmentBranche seg14 = new SegmentBranche(10,12);
+		SegmentBranche seg15 = new SegmentBranche(9,13);
+		SegmentBranche seg16 = new SegmentBranche(8,13);
+		SegmentBranche seg17 = new SegmentBranche(8,14);
+		SegmentBranche seg18 = new SegmentBranche(8,15);
+		SegmentBranche seg19 = new SegmentBranche(9,16);
 		brancheDroite.ajouterSegment(seg12);
 		brancheDroite.ajouterSegment(seg13);
 		brancheDroite.ajouterSegment(seg14);
@@ -92,5 +94,17 @@ public class Grille {
 	
 	public void update(){
 		
+	}
+	
+	public int getWidth(){
+		return grille[0].length;
+	}
+	
+	public int getHeight(){
+		return grille.length;
+	}
+	
+	public Cellule getCellule(int x, int y){
+		return grille[x][y];
 	}
 }

@@ -60,5 +60,10 @@ public class Verre extends Cellule {
 	public boolean isBase() {
 		return false;
 	}
+	
+	@Override
+	public String toString() {
+		return "Cellule ["+x+","+y+"] verre";
+	}
 
 }

@@ -19,7 +19,7 @@ public class Selecteur extends JPanel {
 		this.setP(p);
 		this.setPreferredSize(new Dimension(360, 120));
 		
-		JButton boutonBois = new JButton(new ImageIcon("./res/bloc_bois.png"));
+		final JButton boutonBois = new JButton(new ImageIcon("./res/bloc_bois.png"));
 		boutonBois.setPreferredSize(new Dimension(60, 60));	
 		boutonBois.setToolTipText("Bois");
 		this.add(boutonBois);
@@ -31,7 +31,7 @@ public class Selecteur extends JPanel {
 			}
 		});
 		
-		JButton boutonPierre = new JButton(new ImageIcon("./res/bloc_pierre.png"));
+		final JButton boutonPierre = new JButton(new ImageIcon("./res/bloc_pierre.png"));
 		boutonPierre.setPreferredSize(new Dimension(60, 60));	
 		boutonPierre.setToolTipText("Pierre");
 		this.add(boutonPierre);
@@ -43,8 +43,9 @@ public class Selecteur extends JPanel {
 			}
 		});
 		
-		JButton boutonMetal = new JButton(new ImageIcon("./res/bloc_metal.png"));
-		boutonMetal.setPreferredSize(new Dimension(60, 60));	
+		final JButton boutonMetal = new JButton(new ImageIcon("./res/bloc_metal.png"));
+		boutonMetal.setPreferredSize(new Dimension(60, 60));
+		boutonMetal.setToolTipText("Metal");
 		this.add(boutonMetal);
 		boutonBois.addActionListener(new ActionListener() {
 
@@ -54,8 +55,9 @@ public class Selecteur extends JPanel {
 			}
 		});
 		
-		JButton boutonVerre = new JButton(new ImageIcon("./res/bloc_verre.png"));
-		boutonVerre.setPreferredSize(new Dimension(60, 60));	
+		final JButton boutonVerre = new JButton(new ImageIcon("./res/bloc_verre.png"));
+		boutonVerre.setPreferredSize(new Dimension(60, 60));
+		boutonVerre.setToolTipText("Verre");
 		this.add(boutonVerre);
 		boutonBois.addActionListener(new ActionListener() {
 
@@ -65,8 +67,9 @@ public class Selecteur extends JPanel {
 			}
 		});
 		
-		JButton boutonBase = new JButton(new ImageIcon("./res/bloc_bois.png"));
+		final JButton boutonBase = new JButton(new ImageIcon("./res/bloc_base.png"));
 		boutonBase.setPreferredSize(new Dimension(60, 60));	
+		boutonBase.setToolTipText("Base");
 		this.add(boutonBase);
 		boutonBois.addActionListener(new ActionListener() {
 

@@ -61,4 +61,8 @@ public class Base extends Cellule {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Cellule ["+x+","+y+"] base";
+	}
 }

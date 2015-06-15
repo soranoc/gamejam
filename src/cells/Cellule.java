@@ -1,8 +1,13 @@
 package cells;
 
 import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
+
+import utils.Properties;
 
 
 public abstract class Cellule extends JPanel{
@@ -10,16 +15,37 @@ public abstract class Cellule extends JPanel{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private int x;
-	private int y;
+	protected int x;
+	protected int y;
 	
 	public Cellule(){
+		this.setPreferredSize(new Dimension(Properties.SIZE_CELLS,Properties.SIZE_CELLS));
+		addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent arg0) {}
+			
+			@Override
+			public void mousePressed(MouseEvent arg0) {}			
+			@Override
+			public void mouseExited(MouseEvent arg0) {}
+			
+			@Override
+			public void mouseEntered(MouseEvent arg0) {}
+			
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				mouseHasClicked(arg0);
+			}
+		});
 	}
 	
+	public abstract void mouseHasClicked(MouseEvent e);
+	
 	public Cellule(int x, int y){
+		this();
 		this.setX(x);
 		this.setY(y);
-		this.setPreferredSize(new Dimension(20,20));
 	}
 	
 	abstract public int getPoids();
@@ -82,5 +108,10 @@ public abstract class Cellule extends JPanel{
 	public void setY(int y) {
 		this.y = y;
 	}
+	
+	@Override
+	public abstract String toString();
+
+	public abstract void draw(Graphics2D g2d);
 
 }
