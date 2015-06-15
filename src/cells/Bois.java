@@ -1,9 +1,20 @@
 package cells;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
+
 public class Bois extends Cellule {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
 	public Bois (int x, int y){
 		super(x,y);
+		add(new JLabel(new ImageIcon("./res/bloc_bois.png")));
 	}
 	
 	@Override
@@ -47,10 +58,5 @@ public class Bois extends Cellule {
 		return 1;
 	}
 
-	@Override
-	public void affiche() {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

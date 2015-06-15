@@ -9,6 +9,7 @@ public class Branche {
 
 	public Branche(int poidsMax) {
 		this.setPoidsMax(poidsMax);
+
 	}
 
 	public void ajouterSegment(SegmentBranche sb) {

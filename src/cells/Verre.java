@@ -1,9 +1,18 @@
 package cells;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 public class Verre extends Cellule {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public Verre(int x, int y) {
 		super(x, y);
+		add(new JLabel(new ImageIcon("./res/bloc_verre.png")));
 	}
 
 	@Override
@@ -39,12 +48,6 @@ public class Verre extends Cellule {
 	@Override
 	public boolean isVerre() {
 		return true;
-	}
-
-	@Override
-	public void affiche() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

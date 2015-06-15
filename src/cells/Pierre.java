@@ -1,8 +1,18 @@
 package cells;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 public class Pierre extends Cellule {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Pierre(int x, int y){
 		super(x,y);
+		add(new JLabel(new ImageIcon("./res/bloc_pierre.png")));
+
 	}
 
 	@Override
@@ -38,12 +48,6 @@ public class Pierre extends Cellule {
 	@Override
 	public boolean isVerre() {
 		return false;
-	}
-
-	@Override
-	public void affiche() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

@@ -1,7 +1,13 @@
 package cells;
 
+import javax.swing.JPanel;
 
-public abstract class Cellule {
+
+public abstract class Cellule extends JPanel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int x;
 	private int y;
 	
@@ -12,8 +18,6 @@ public abstract class Cellule {
 		this.setX(x);
 		this.setY(y);
 	}
-	
-	abstract public void affiche();
 	
 	abstract public int getPoids();
 	/**

@@ -1,8 +1,15 @@
 package cells;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 
 
 public class SegmentBranche extends Cellule {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Cellule[] cells;
 	private double coeff;
 	
@@ -12,6 +19,7 @@ public class SegmentBranche extends Cellule {
 	 */
 	public SegmentBranche(int x, int y){
 		super(x,y);
+		add(new JLabel(new ImageIcon("./res/branche.png")));
 		cells = new Cellule[y];
 		remplirCells();
 	}
@@ -91,11 +99,7 @@ public class SegmentBranche extends Cellule {
 	public Cellule[] getCells() {
 		return cells;
 	}
-	@Override
-	public void affiche() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	@Override
 	public int getPoids() {
 		return 0;

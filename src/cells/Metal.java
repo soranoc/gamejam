@@ -1,9 +1,18 @@
 package cells;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 public class Metal extends Cellule {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public Metal(int x, int y) {
 		super(x, y);
+		add(new JLabel(new ImageIcon("./res/bloc_metal.png")));
 	}
 
 	@Override
@@ -39,12 +48,6 @@ public class Metal extends Cellule {
 	@Override
 	public boolean isVerre() {
 		return false;
-	}
-
-	@Override
-	public void affiche() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
