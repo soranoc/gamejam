@@ -12,7 +12,7 @@ public class Pierre extends Cellule {
 	public Pierre(int x, int y){
 		super(x,y);
 		add(new JLabel(new ImageIcon("./res/bloc_pierre.png")));
-
+		setVisible(true);
 	}
 
 	@Override

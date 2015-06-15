@@ -13,6 +13,7 @@ public class Verre extends Cellule {
 	public Verre(int x, int y) {
 		super(x, y);
 		add(new JLabel(new ImageIcon("./res/bloc_verre.png")));
+		setVisible(true);
 	}
 
 	@Override

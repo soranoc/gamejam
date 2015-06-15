@@ -13,6 +13,7 @@ public class Metal extends Cellule {
 	public Metal(int x, int y) {
 		super(x, y);
 		add(new JLabel(new ImageIcon("./res/bloc_metal.png")));
+		setVisible(true);
 	}
 
 	@Override

@@ -13,6 +13,7 @@ public class Base extends Cellule {
 	public Base(int x, int y) {
 		super(x, y);
 		add(new JLabel(new ImageIcon("./res/bloc_base.jpg")));
+		setVisible(true);
 	}
 
 	@Override

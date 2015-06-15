@@ -20,7 +20,6 @@ public abstract class Cellule extends JPanel{
 		this.setX(x);
 		this.setY(y);
 		this.setPreferredSize(new Dimension(20,20));
-		setVisible(true);
 	}
 	
 	abstract public int getPoids();

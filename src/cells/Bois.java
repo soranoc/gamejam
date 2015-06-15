@@ -15,6 +15,7 @@ public class Bois extends Cellule {
 	public Bois (int x, int y){
 		super(x,y);
 		add(new JLabel(new ImageIcon("./res/bloc_bois.png")));
+		setVisible(true);
 	}
 	
 	@Override

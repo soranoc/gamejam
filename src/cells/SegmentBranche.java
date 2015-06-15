@@ -22,6 +22,7 @@ public class SegmentBranche extends Cellule {
 		add(new JLabel(new ImageIcon("./res/branche.jpg")));
 		cells = new Cellule[y];
 		remplirCells();
+		setVisible(true);
 	}
 	/**
 	 * Remplit le tableau avec des cellules vides
