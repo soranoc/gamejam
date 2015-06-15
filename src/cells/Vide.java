@@ -2,6 +2,7 @@ package cells;
 
 public class Vide extends Cellule {
 
+
 	@Override
 	public boolean isBranche() {
 		return false;
@@ -35,6 +36,17 @@ public class Vide extends Cellule {
 	@Override
 	public boolean isVerre() {
 		return false;
+	}
+
+	@Override
+	public void affiche() {
+		//Le vide ne s'affichant pas, cette méthode est vide
+	}
+
+	@Override
+	public int getPoids() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

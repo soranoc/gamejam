@@ -1,11 +1,11 @@
 package cells;
 
 public class Bois extends Cellule {
-	public Bois() {
-		setPoids(1);
-		// setSprite("URL");
+	
+	public Bois (int x, int y){
+		super(x,y);
 	}
-
+	
 	@Override
 	public boolean isBranche() {
 		return false;
@@ -39,6 +39,18 @@ public class Bois extends Cellule {
 	@Override
 	public boolean isBloc() {
 		return true;
+	}
+
+
+	@Override
+	public int getPoids() {
+		return 1;
+	}
+
+	@Override
+	public void affiche() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

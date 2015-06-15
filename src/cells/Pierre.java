@@ -1,6 +1,9 @@
 package cells;
 
 public class Pierre extends Cellule {
+	public Pierre(int x, int y){
+		super(x,y);
+	}
 
 	@Override
 	public boolean isBranche() {
@@ -35,6 +38,17 @@ public class Pierre extends Cellule {
 	@Override
 	public boolean isVerre() {
 		return false;
+	}
+
+	@Override
+	public void affiche() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getPoids() {
+		return 2;
 	}
 
 }

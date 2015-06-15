@@ -1,56 +1,21 @@
 package cells;
 
-import java.io.File;
 
 public abstract class Cellule {
-	private File sprite;
-	private int poids;
-
-	/**
-	 * 
-	 * @return Renvoie le poids du bloc
-	 */
-	public int getPoids() {
-		return poids;
+	private int x;
+	private int y;
+	
+	public Cellule(){
 	}
-
-	/**
-	 * 
-	 * @param poids
-	 *            le nouveau poids de la cellule
-	 */
-	public void setPoids(int poids) {
-		this.poids = poids;
+	
+	public Cellule(int x, int y){
+		this.setX(x);
+		this.setY(y);
 	}
-
-	/**
-	 * 
-	 * @return Renvoie le fichier correspondant au Sprite
-	 */
-	public File getSprite() {
-		return sprite;
-	}
-
-	/**
-	 * 
-	 * @param sprite
-	 *            Le nouveau fichier qui servira de sprite
-	 */
-	public void setSprite(File sprite) {
-		this.sprite = sprite;
-	}
-
-	/**
-	 * 
-	 * @param coeff
-	 *            Le coefficient correspondant à la branche sur laquelle le bloc
-	 *            est posé
-	 * @return le poids multiplié par le coefficient
-	 */
-	public double getPoidsCoeff(double coeff) {
-		return coeff * poids;
-	}
-
+	
+	abstract public void affiche();
+	
+	abstract public int getPoids();
 	/**
 	 * 
 	 * @return true si la cellule est une branche
@@ -92,5 +57,21 @@ public abstract class Cellule {
 	 * @return true si la cellule est un bloc de verre
 	 */
 	public abstract boolean isVerre();
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
 
 }

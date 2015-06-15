@@ -10,8 +10,9 @@ public class SegmentBranche extends Cellule {
 	 * 
 	 * @param nbCases Le nombre de cases qui se trouvent au dessus de la branche
 	 */
-	public SegmentBranche(int nbCases){
-		cells = new Cellule[nbCases];
+	public SegmentBranche(int x, int y){
+		super(x,y);
+		cells = new Cellule[y];
 		remplirCells();
 	}
 	/**
@@ -71,8 +72,11 @@ public class SegmentBranche extends Cellule {
 	 * @return Le poids total de ce qui se trouve sur la branche
 	 */
 	public double getPoidsTotal(){
-		//TODO
-		return 0;
+		int poids=0;
+		for(int i=0; i<cells.length;++i){
+			poids = poids + cells[i].getPoids();
+		}
+		return coeff*poids;
 	}
 	
 	public void ajouterBloc(Cellule bloc){
@@ -86,6 +90,15 @@ public class SegmentBranche extends Cellule {
 
 	public Cellule[] getCells() {
 		return cells;
+	}
+	@Override
+	public void affiche() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public int getPoids() {
+		return 0;
 	}
 
 }

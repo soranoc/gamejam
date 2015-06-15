@@ -2,6 +2,10 @@ package cells;
 
 public class Metal extends Cellule {
 
+	public Metal(int x, int y) {
+		super(x, y);
+	}
+
 	@Override
 	public boolean isBranche() {
 		return false;
@@ -35,6 +39,17 @@ public class Metal extends Cellule {
 	@Override
 	public boolean isVerre() {
 		return false;
+	}
+
+	@Override
+	public void affiche() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getPoids() {
+		return 4;
 	}
 
 }
