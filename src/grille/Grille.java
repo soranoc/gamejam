@@ -1,5 +1,7 @@
 package grille;
+import cells.Branche;
 import cells.Cellule;
+import cells.SegmentBranche;
 import cells.Vide;
 
 
@@ -10,7 +12,9 @@ public class Grille {
 	
 	
 	private Cellule[][] grille;
-	
+	private Branche brancheGauche = new Branche(30);
+	private Branche brancheDroite = new Branche(30);
+
 	/**
 	 * Constructeur par défault avec valeur des constantes
 	 */
@@ -29,6 +33,7 @@ public class Grille {
 		for(int i = 0; i < getWidth(); i++)
 			for(int j = 0; j < getHeight(); j++)
 				grille[i][j] = new Vide(i,j);
+		getExemple();
 	}
 	
 	/**
@@ -43,6 +48,73 @@ public class Grille {
 			return grille[x][y];
 		else
 			throw new ArrayIndexOutOfBoundsException("Cellule {x : "+x+", y :"+y+"} n'existe pas.");
+	}
+	
+	private void setSegment(SegmentBranche sb){
+		grille[sb.getX()][sb.getY()] = sb;
+	}
+	
+	private void getExemple(){
+		// Branche Gauche
+		SegmentBranche seg1 = new SegmentBranche(5,1);
+		SegmentBranche seg2 = new SegmentBranche(6,1);
+		SegmentBranche seg3 = new SegmentBranche(7,2);
+		SegmentBranche seg4 = new SegmentBranche(7,3);
+		SegmentBranche seg5 = new SegmentBranche(8,4);
+		SegmentBranche seg6 = new SegmentBranche(9,4);
+		SegmentBranche seg7 = new SegmentBranche(10,5);
+		SegmentBranche seg8 = new SegmentBranche(9,6);
+		SegmentBranche seg9 = new SegmentBranche(9,7);
+		SegmentBranche seg10 = new SegmentBranche(10,7);
+		SegmentBranche seg11 = new SegmentBranche(11,7);
+		brancheGauche.ajouterSegment(seg1);
+		brancheGauche.ajouterSegment(seg2);
+		brancheGauche.ajouterSegment(seg3);
+		brancheGauche.ajouterSegment(seg4);
+		brancheGauche.ajouterSegment(seg5);
+		brancheGauche.ajouterSegment(seg6);
+		brancheGauche.ajouterSegment(seg7);
+		brancheGauche.ajouterSegment(seg8);
+		brancheGauche.ajouterSegment(seg9);
+		brancheGauche.ajouterSegment(seg10);
+		brancheGauche.ajouterSegment(seg11);
+		setSegment(seg1);
+		setSegment(seg2);
+		setSegment(seg3);
+		setSegment(seg4);
+		setSegment(seg5);
+		setSegment(seg6);
+		setSegment(seg7);
+		setSegment(seg8);
+		setSegment(seg9);
+		setSegment(seg10);
+		setSegment(seg11);
+		
+		// Branche Droite
+		SegmentBranche seg12 = new SegmentBranche(11,10);
+		SegmentBranche seg13 = new SegmentBranche(11,11);
+		SegmentBranche seg14 = new SegmentBranche(10,12);
+		SegmentBranche seg15 = new SegmentBranche(9,13);
+		SegmentBranche seg16 = new SegmentBranche(8,13);
+		SegmentBranche seg17 = new SegmentBranche(8,14);
+		SegmentBranche seg18 = new SegmentBranche(8,15);
+		SegmentBranche seg19 = new SegmentBranche(9,16);
+		brancheDroite.ajouterSegment(seg12);
+		brancheDroite.ajouterSegment(seg13);
+		brancheDroite.ajouterSegment(seg14);
+		brancheDroite.ajouterSegment(seg15);
+		brancheDroite.ajouterSegment(seg16);
+		brancheDroite.ajouterSegment(seg17);
+		brancheDroite.ajouterSegment(seg18);
+		brancheDroite.ajouterSegment(seg19);
+		setSegment(seg12);
+		setSegment(seg13);
+		setSegment(seg14);
+		setSegment(seg15);
+		setSegment(seg16);
+		setSegment(seg17);
+		setSegment(seg18);
+		setSegment(seg19);
 	}
 	
 	/**

@@ -2,6 +2,7 @@ package affichage;
 
 import grille.Grille;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
@@ -15,7 +16,11 @@ public class Ecran extends JFrame{
 		super("Test plateau");
 		setPreferredSize(new Dimension(600,800));
 		
-		add(new Plateau(new Grille()));
+		setLayout(new BorderLayout());
+		
+		Plateau p= new Plateau(new Grille());
+		add(new Selecteur(p), BorderLayout.NORTH);
+		add(p);
 		
 		pack();
 		setVisible(true);

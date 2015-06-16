@@ -2,11 +2,14 @@ package affichage;
 
 import grille.Grille;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
+
+import utils.Properties;
 
 import cells.Cellule;
 
@@ -16,6 +19,7 @@ public class Plateau extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private Grille grille;
+	private String matiere;
 	
 	/**
 	 * Constructeur privé qui initialise le MouseListener
@@ -62,6 +66,7 @@ public class Plateau extends JPanel {
 	 */
 	public Plateau(Grille grille) {
 		this();
+		setPreferredSize(new Dimension(Properties.WIDTH*Properties.SIZE_CELLS, Properties.HEIGHT*Properties.SIZE_CELLS));
 		this.setGrille(grille);
 	}
 
@@ -89,6 +94,14 @@ public class Plateau extends JPanel {
 		for(int i = 0; i < grille.getWidth(); i++)
 			for(int j = 0; j < grille.getHeight(); j++)
 				grille.getCellule(i, j).paint(g);
+	}
+
+	public String getMatiere() {
+		return matiere;
+	}
+
+	public void setMatiere(String matiere) {
+		this.matiere = matiere;
 	}
 	
 
