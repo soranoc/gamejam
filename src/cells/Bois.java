@@ -63,7 +63,7 @@ public class Bois extends Cellule {
 
 	@Override
 	public String getUrlImg() {
-		return "res/bloc_bois.png";
+		return "/res/bloc_bois.png";
 	}
 
 

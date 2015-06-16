@@ -1,6 +1,6 @@
 package cells;
-import java.awt.Component;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
@@ -80,9 +80,9 @@ public abstract class Cellule {
 	 * Méthode utiliser pour afficher la cellule
 	 */
 	
-	public void paint(Graphics g, Component c){
-		ImageIcon img = new ImageIcon(getClass().getResource(this.getUrlImg()));
-		img.paintIcon(c, g, getX(), getY());
+	public void paint(Graphics g){
+		Image img = new ImageIcon(getClass().getResource(this.getUrlImg())).getImage();
+		g.drawImage(img, getX(), getY(), null); // Changer getX et getY par getPixelX et getPixelY si jamais c'est pas bon TODO
 	}
 
 	abstract public String getUrlImg();

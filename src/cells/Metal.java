@@ -60,7 +60,7 @@ public class Metal extends Cellule {
 
 	@Override
 	public String getUrlImg() {
-		return "res/bloc_metal.png";
+		return "/res/bloc_metal.png";
 	}
 
 }

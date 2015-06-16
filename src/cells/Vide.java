@@ -16,6 +16,7 @@ public class Vide extends Cellule{
 		return "Cellule Vide [x=" + getX() + ", y=" + getY() + "]";
 	}
 
+	@Override
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		

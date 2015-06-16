@@ -89,7 +89,7 @@ public class SegmentBranche extends Cellule {
 	
 	@Override
 	public String getUrlImg() {
-		return "res/branche.jpg";
+		return "/res/branche.jpg";
 	}
 
 }

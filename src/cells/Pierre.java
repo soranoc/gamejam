@@ -59,7 +59,7 @@ public class Pierre extends Cellule {
 
 	@Override
 	public String getUrlImg() {
-		return "res/bloc_pierre.png";
+		return "/res/bloc_pierre.png";
 	}
 
 }

@@ -2,6 +2,7 @@ package affichage;
 
 import grille.Grille;
 
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
@@ -10,7 +11,6 @@ import java.awt.event.MouseListener;
 import javax.swing.JPanel;
 
 import utils.Properties;
-
 import cells.Cellule;
 
 
@@ -93,7 +93,7 @@ public class Plateau extends JPanel {
 	public void paint(Graphics g) {		
 		for(int i = 0; i < grille.getWidth(); i++)
 			for(int j = 0; j < grille.getHeight(); j++)
-				grille.getCellule(i, j).paint(g, this);
+				grille.getCellule(i, j).paint(g);
 	}
 
 	public String getMatiere() {
