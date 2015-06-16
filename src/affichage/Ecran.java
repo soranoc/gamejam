@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 public class Ecran extends JFrame{
 
 	private static final long serialVersionUID = 1L;
+	private static final Grille grille = new Grille();
 	
 	public Ecran() {
 		super("Test plateau");
@@ -18,7 +19,7 @@ public class Ecran extends JFrame{
 		
 		setLayout(new BorderLayout());
 		
-		Plateau p= new Plateau(new Grille());
+		Plateau p= new Plateau(grille);
 		add(new Selecteur(p), BorderLayout.NORTH);
 		add(p);
 		

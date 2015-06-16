@@ -3,9 +3,10 @@ package cells;
 
 
 
+
 public class SegmentBranche extends Cellule {
 
-	double coeff;
+	private double coeff;
 	
 	/**
 	 * 
@@ -13,6 +14,7 @@ public class SegmentBranche extends Cellule {
 	 */
 	public SegmentBranche(int x, int y){
 		super(x,y);
+		
 	}
 	@Override
 	public boolean isBranche() {
