@@ -29,6 +29,11 @@ public class Ecran extends JFrame{
 		add(degueulasse, BorderLayout.NORTH);
 		add(new Selecteur(p), BorderLayout.SOUTH);
 		
+		//Test
+		System.out.println(grille.getBranches()[0].getPoidsRestant());
+		System.out.println(grille.getBranches()[1].getPoidsRestant());
+
+		
 		pack();
 		setVisible(true);
 	}

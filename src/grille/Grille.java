@@ -102,14 +102,14 @@ public class Grille {
 		SegmentBranche seg17 = new SegmentBranche(14,8);
 		SegmentBranche seg18 = new SegmentBranche(15,8);
 		SegmentBranche seg19 = new SegmentBranche(16,9);
-		branches[0].ajouterSegment(seg12);
-		branches[0].ajouterSegment(seg13);
-		branches[0].ajouterSegment(seg14);
-		branches[0].ajouterSegment(seg15);
-		branches[0].ajouterSegment(seg16);
-		branches[0].ajouterSegment(seg17);
-		branches[0].ajouterSegment(seg18);
-		branches[0].ajouterSegment(seg19);
+		branches[1].ajouterSegment(seg12);
+		branches[1].ajouterSegment(seg13);
+		branches[1].ajouterSegment(seg14);
+		branches[1].ajouterSegment(seg15);
+		branches[1].ajouterSegment(seg16);
+		branches[1].ajouterSegment(seg17);
+		branches[1].ajouterSegment(seg18);
+		branches[1].ajouterSegment(seg19);
 		setSegment(seg12);
 		setSegment(seg13);
 		setSegment(seg14);
@@ -136,6 +136,14 @@ public class Grille {
 	 */
 	public void setCellule(int x, int y, Cellule cellule){
 		grille[x][y] = cellule;
+	}
+	
+	public Branche[] getBranches(){
+		return branches;
+	}
+	
+	public void setBranches(Branche[] branches){
+		this.branches = branches;
 	}
 	
 	/**
