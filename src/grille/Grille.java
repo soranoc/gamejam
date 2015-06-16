@@ -1,110 +1,74 @@
 package grille;
+import cells.Cellule;
+import cells.Vide;
 
-import utils.Properties;
-import affichage.Plateau;
-import cells.*;
 
 public class Grille {
+	
+	public static final int WIDTH = 18;
+	public static final int HEIGHT = 12;
+	
+	
 	private Cellule[][] grille;
-	private Branche brancheGauche;
-	private Branche brancheDroite;
-
-	public Grille (){
-		grille = new Cellule[Properties.HEIGHT][Properties.WIDTH];
-		for (int i = 0; i < grille.length; i++) {
-			for (int j = 0; j < grille[0].length; j++) {
+	
+	/**
+	 * Constructeur par défault avec valeur des constantes
+	 */
+	public Grille() {
+		this(Grille.WIDTH,Grille.HEIGHT);
+	}
+	
+	/**
+	 * Constructeur
+	 * @param w : WIDTH
+	 * @param h : HEIGHT
+	 */
+	public Grille(int w, int h){
+		grille = new Cellule[w][h];
+		
+		for(int i = 0; i < getWidth(); i++)
+			for(int j = 0; j < getHeight(); j++)
 				grille[i][j] = new Vide(i,j);
-			}
-		}
-		brancheDroite = new Branche(30);
-		brancheGauche = new Branche(30);
-		getExemple();
 	}
 	
-	public void setSegment(int x, int y){
-		grille[x][y] = new SegmentBranche(x,y);
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @return Cellule à la coordonnée {x,y} si elle existe
+	 * @throws ArrayIndexOutOfBoundsException si la cellule en {x,y} n'existe pas
+	 */
+	public Cellule getCellule(int x, int y){
+		if(x >= 0 && x < getWidth() && y >=0 && y < getHeight())
+			return grille[x][y];
+		else
+			throw new ArrayIndexOutOfBoundsException("Cellule {x : "+x+", y :"+y+"} n'existe pas.");
 	}
 	
-	private void getExemple(){
-		// Branche Gauche
-		SegmentBranche seg1 = new SegmentBranche(5,1);
-		SegmentBranche seg2 = new SegmentBranche(6,1);
-		SegmentBranche seg3 = new SegmentBranche(7,2);
-		SegmentBranche seg4 = new SegmentBranche(7,3);
-		SegmentBranche seg5 = new SegmentBranche(8,4);
-		SegmentBranche seg6 = new SegmentBranche(9,4);
-		SegmentBranche seg7 = new SegmentBranche(10,5);
-		SegmentBranche seg8 = new SegmentBranche(9,6);
-		SegmentBranche seg9 = new SegmentBranche(9,7);
-		SegmentBranche seg10 = new SegmentBranche(10,7);
-		SegmentBranche seg11 = new SegmentBranche(11,7);
-		brancheGauche.ajouterSegment(seg1);
-		brancheGauche.ajouterSegment(seg2);
-		brancheGauche.ajouterSegment(seg3);
-		brancheGauche.ajouterSegment(seg4);
-		brancheGauche.ajouterSegment(seg5);
-		brancheGauche.ajouterSegment(seg6);
-		brancheGauche.ajouterSegment(seg7);
-		brancheGauche.ajouterSegment(seg8);
-		brancheGauche.ajouterSegment(seg9);
-		brancheGauche.ajouterSegment(seg10);
-		brancheGauche.ajouterSegment(seg11);
-		setSegment(seg1.getX(), seg1.getY());
-		setSegment(seg2.getX(), seg2.getY());
-		setSegment(seg3.getX(), seg3.getY());
-		setSegment(seg4.getX(), seg4.getY());
-		setSegment(seg5.getX(), seg5.getY());
-		setSegment(seg6.getX(), seg6.getY());
-		setSegment(seg7.getX(), seg7.getY());
-		setSegment(seg8.getX(), seg8.getY());
-		setSegment(seg9.getX(), seg9.getY());
-		setSegment(seg10.getX(), seg10.getY());
-		setSegment(seg11.getX(), seg11.getY());
-		
-		// Branche Droite
-		SegmentBranche seg12 = new SegmentBranche(11,10);
-		SegmentBranche seg13 = new SegmentBranche(11,11);
-		SegmentBranche seg14 = new SegmentBranche(10,12);
-		SegmentBranche seg15 = new SegmentBranche(9,13);
-		SegmentBranche seg16 = new SegmentBranche(8,13);
-		SegmentBranche seg17 = new SegmentBranche(8,14);
-		SegmentBranche seg18 = new SegmentBranche(8,15);
-		SegmentBranche seg19 = new SegmentBranche(9,16);
-		brancheDroite.ajouterSegment(seg12);
-		brancheDroite.ajouterSegment(seg13);
-		brancheDroite.ajouterSegment(seg14);
-		brancheDroite.ajouterSegment(seg15);
-		brancheDroite.ajouterSegment(seg16);
-		brancheDroite.ajouterSegment(seg17);
-		brancheDroite.ajouterSegment(seg18);
-		brancheDroite.ajouterSegment(seg19);
-		setSegment(seg12.getX(), seg12.getY());
-		setSegment(seg13.getX(), seg13.getY());
-		setSegment(seg14.getX(), seg14.getY());
-		setSegment(seg15.getX(), seg15.getY());
-		setSegment(seg16.getX(), seg16.getY());
-		setSegment(seg17.getX(), seg17.getY());
-		setSegment(seg18.getX(), seg18.getY());
-		setSegment(seg19.getX(), seg19.getY());
+	/**
+	 * Modifie la cellule à la coordonnée {x,y} par la cellule en paramètre
+	 * @param x
+	 * @param y
+	 * @param cellule
+	 */
+	public void setCellule(int x, int y, Cellule cellule){
+		grille[x][y] = cellule;
 	}
 	
-	public Cellule[][] getGrille(){
-		return grille;
-	}
-	
-	public void update(){
-		
-	}
-	
+	/**
+	 * 
+	 * @return longueur de la grille
+	 */
 	public int getWidth(){
-		return grille[0].length;
-	}
-	
-	public int getHeight(){
 		return grille.length;
 	}
 	
-	public Cellule getCellule(int x, int y){
-		return grille[x][y];
+	/**
+	 * 
+	 * @return largeur de la grille
+	 */
+	public int getHeight(){
+		return grille[0].length;
 	}
+
 }
