@@ -86,4 +86,22 @@ public abstract class Cellule {
 		System.out.println(this);
 	}
 	
+	
+	abstract public boolean isBranche();
+
+	abstract public boolean isEmpty();
+	
+	abstract public boolean isBois();
+
+	abstract public boolean isPierre();
+
+	abstract public boolean isMetal();
+
+	abstract public boolean isVerre();
+
+	abstract public boolean isBloc();
+
+	abstract public int getPoids();
+
+	abstract public boolean isBase() ;
 }

@@ -1,19 +1,11 @@
 package cells;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import java.awt.Graphics;
 
 public class Verre extends Cellule {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
 	public Verre(int x, int y) {
 		super(x, y);
-		add(new JLabel(new ImageIcon("./res/bloc_verre.png")));
-		setVisible(true);
 	}
 
 	@Override
@@ -63,7 +55,13 @@ public class Verre extends Cellule {
 	
 	@Override
 	public String toString() {
-		return "Cellule ["+x+","+y+"] verre";
+		return "Cellule ["+getX()+","+getY()+"] verre";
+	}
+
+	@Override
+	public void paint(Graphics g) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

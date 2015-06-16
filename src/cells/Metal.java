@@ -1,19 +1,12 @@
 package cells;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import java.awt.Graphics;
 
 public class Metal extends Cellule {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	public Metal(int x, int y) {
 		super(x, y);
-		add(new JLabel(new ImageIcon("./res/bloc_metal.png")));
-		setVisible(true);
 	}
 
 	@Override
@@ -63,7 +56,13 @@ public class Metal extends Cellule {
 	
 	@Override
 	public String toString() {
-		return "Cellule ["+x+","+y+"] metal";
+		return "Cellule ["+getX()+","+getY()+"] metal";
+	}
+
+	@Override
+	public void paint(Graphics g) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

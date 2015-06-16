@@ -1,19 +1,13 @@
 package cells;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import java.awt.Graphics;
+
 
 public class Base extends Cellule {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	public Base(int x, int y) {
 		super(x, y);
-		add(new JLabel(new ImageIcon("./res/bloc_base.jpg")));
-		setVisible(true);
 	}
 
 	@Override
@@ -63,6 +57,12 @@ public class Base extends Cellule {
 
 	@Override
 	public String toString() {
-		return "Cellule ["+x+","+y+"] base";
+		return "Cellule ["+getX()+","+getY()+"] base";
+	}
+
+	@Override
+	public void paint(Graphics g) {
+		// TODO Auto-generated method stub
+		
 	}
 }
