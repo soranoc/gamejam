@@ -20,7 +20,7 @@ public class Vide extends Cellule{
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		
-		g2d.setColor(new Color(new Random().nextInt(256),new Random().nextInt(256),new Random().nextInt(256)));
+		g2d.setColor(new Color(new Random().nextInt(100),new Random().nextInt(256),0));
 		
 		g2d.fillRect(getPixelX(), getPixelY(), Cellule.SIZE, Cellule.SIZE);
 	}
