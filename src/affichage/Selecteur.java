@@ -25,9 +25,14 @@ public class Selecteur extends JPanel {
 
 	public Selecteur(final Plateau p) {
 		
+		this.setPreferredSize(new Dimension(575, 80));
+		
 		JPanel boutons = new JPanel(new FlowLayout(WIDTH));
+		
 		JPanel infos = new JPanel(new FlowLayout(WIDTH));
+		
 		JButton pattern = new JButton(new ImageIcon("./res/blueprint.jpg"));
+		pattern.setToolTipText("Modèle");
 		pattern.setPreferredSize(new Dimension(120, 60));
 		pattern.addActionListener(new ActionListener() {
 
@@ -50,8 +55,7 @@ public class Selecteur extends JPanel {
 		this.setLayout(new GridLayout(1,2));
 		
 		this.setP(p);
-		this.setPreferredSize(new Dimension(360, 80));
-		
+
 		final JButton boutonBois = new JButton(new ImageIcon("./res/boutons/bloc_bois.png"));
 		boutonBois.setPreferredSize(new Dimension(40, 40));	
 		boutonBois.setToolTipText("Bois");

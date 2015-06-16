@@ -14,7 +14,7 @@ public class Tronc extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	public Tronc(){
-		setPreferredSize(new Dimension(588, 340));
+		setPreferredSize(new Dimension(575, 340));
 	}
 	public void paint(Graphics g) {
 		Image img = new ImageIcon(getClass().getResource("/res/tronc.png"))
