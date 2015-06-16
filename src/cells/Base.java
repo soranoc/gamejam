@@ -61,6 +61,6 @@ public class Base extends Cellule {
 
 	@Override
 	public String getUrlImg() {
-		return "/res/bloc_base";
+		return "/res/bloc_base.jpg";
 	}
 }

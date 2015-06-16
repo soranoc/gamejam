@@ -1,6 +1,7 @@
 package affichage;
 
 import grille.Grille;
+import grille.Pattern;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -32,7 +33,10 @@ public class Ecran extends JFrame{
 		//Test
 		System.out.println(grille.getBranches()[0].getPoidsRestant());
 		System.out.println(grille.getBranches()[1].getPoidsRestant());
-
+		
+		Pattern pat = new Pattern();
+		pat.getExemple();
+		System.out.println(grille.contains(pat));
 		
 		pack();
 		setVisible(true);
