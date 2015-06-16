@@ -87,10 +87,12 @@ public class SegmentBranche extends Cellule {
 	
 	public double getPoidsTotal(){
 		double poids=0.0;
+		if(Ecran.getGrille().getCellule(getX(), getY()-1).isBranche()){
+			return 0.0;
+		}
 		for (int y = getY()-1; y>=0; --y){
 			poids = poids +(Ecran.getGrille().getCellule(getX(), y).getPoids()*coeff);
 		}
-		//TODO System.out.println("Poids total de la branche "+getX()+ ""+getY()+" : "+poids);
 		return poids;
 	}
 	
