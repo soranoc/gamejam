@@ -16,18 +16,18 @@ public class Ecran extends JFrame{
 	private static final Grille grille = new Grille();
 	
 	public Ecran() {
-		super("Test plateau");
-		setPreferredSize(new Dimension(588,800));
+		super("House on Tree");
+		setPreferredSize(new Dimension(575,800));
 		setResizable(false);
 		
 		setLayout(new BorderLayout());
 		JPanel degueulasse = new JPanel();
 		Plateau p= new Plateau(grille);
 		degueulasse.setLayout(new GridLayout(2,1));
-		add(new Selecteur(p), BorderLayout.NORTH);
 		degueulasse.add(p);
 		degueulasse.add(new Tronc());
-		add(degueulasse, BorderLayout.CENTER);
+		add(degueulasse, BorderLayout.NORTH);
+		add(new Selecteur(p), BorderLayout.SOUTH);
 		
 		pack();
 		setVisible(true);
