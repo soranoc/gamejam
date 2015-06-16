@@ -27,6 +27,10 @@ public class Ecran extends JFrame{
 		setVisible(true);
 	}
 	
+	public static Grille getGrille(){
+		return grille;
+	}
+	
 	public static void main(String[] args) {
 		new Ecran();
 	}

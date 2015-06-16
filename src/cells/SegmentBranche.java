@@ -1,5 +1,7 @@
 package cells;
 
+import affichage.Ecran;
+
 
 
 
@@ -14,7 +16,18 @@ public class SegmentBranche extends Cellule {
 	 */
 	public SegmentBranche(int x, int y){
 		super(x,y);
-		
+		calcCoeff();		
+	}
+	
+	private void calcCoeff(){
+		double coeff = 0.0;
+		if(getX()<8){
+			coeff = 1.0 + ((8-getX())/10.0);
+		}
+		else if(getX()>9){
+			coeff = 1.0 + ((getX()-9)/10.0);
+		}
+		this.setCoeff(coeff);
 	}
 	@Override
 	public boolean isBranche() {
@@ -70,6 +83,15 @@ public class SegmentBranche extends Cellule {
 	@Override
 	public String toString() {
 		return "Cellule ["+getX()+","+getY()+"] segment branche (coef :"+coeff+")";
+	}
+	
+	public double getPoidsTotal(){
+		double poids=0.0;
+		for (int y = getY()-1; y>=0; --y){
+			poids = poids +(Ecran.getGrille().getCellule(getX(), y).getPoids()*coeff);
+		}
+		//TODO System.out.println("Poids total de la branche "+getX()+ ""+getY()+" : "+poids);
+		return poids;
 	}
 	
 
