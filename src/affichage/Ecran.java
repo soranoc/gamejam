@@ -4,8 +4,10 @@ import grille.Grille;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 
 public class Ecran extends JFrame{
@@ -15,13 +17,17 @@ public class Ecran extends JFrame{
 	
 	public Ecran() {
 		super("Test plateau");
-		setPreferredSize(new Dimension(600,800));
+		setPreferredSize(new Dimension(588,800));
+		setResizable(false);
 		
 		setLayout(new BorderLayout());
-		
+		JPanel degueulasse = new JPanel();
 		Plateau p= new Plateau(grille);
+		degueulasse.setLayout(new GridLayout(2,1));
 		add(new Selecteur(p), BorderLayout.NORTH);
-		add(p);
+		degueulasse.add(p);
+		degueulasse.add(new Tronc());
+		add(degueulasse, BorderLayout.CENTER);
 		
 		pack();
 		setVisible(true);
