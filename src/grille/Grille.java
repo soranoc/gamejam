@@ -1,6 +1,8 @@
 package grille;
+import cells.Bois;
 import cells.Branche;
 import cells.Cellule;
+import cells.Metal;
 import cells.SegmentBranche;
 import cells.Vide;
 
@@ -12,8 +14,7 @@ public class Grille {
 	
 	
 	private Cellule[][] grille;
-	private Branche brancheGauche = new Branche(30);
-	private Branche brancheDroite = new Branche(30);
+	private Branche[] branches;
 
 	/**
 	 * Constructeur par défault avec valeur des constantes
@@ -55,6 +56,8 @@ public class Grille {
 	}
 	
 	private void getExemple(){
+		branches  = new Branche[]{new Branche(30), new Branche(30)};
+		
 		// Branche Gauche
 		SegmentBranche seg1 = new SegmentBranche(1,5);
 		SegmentBranche seg2 = new SegmentBranche(1,6);
@@ -67,17 +70,17 @@ public class Grille {
 		SegmentBranche seg9 = new SegmentBranche(7,9);
 		SegmentBranche seg10 = new SegmentBranche(7,10);
 		SegmentBranche seg11 = new SegmentBranche(7,11);
-		brancheGauche.ajouterSegment(seg1);
-		brancheGauche.ajouterSegment(seg2);
-		brancheGauche.ajouterSegment(seg3);
-		brancheGauche.ajouterSegment(seg4);
-		brancheGauche.ajouterSegment(seg5);
-		brancheGauche.ajouterSegment(seg6);
-		brancheGauche.ajouterSegment(seg7);
-		brancheGauche.ajouterSegment(seg8);
-		brancheGauche.ajouterSegment(seg9);
-		brancheGauche.ajouterSegment(seg10);
-		brancheGauche.ajouterSegment(seg11);
+		branches[0].ajouterSegment(seg1);
+		branches[0].ajouterSegment(seg2);
+		branches[0].ajouterSegment(seg3);
+		branches[0].ajouterSegment(seg4);
+		branches[0].ajouterSegment(seg5);
+		branches[0].ajouterSegment(seg6);
+		branches[0].ajouterSegment(seg7);
+		branches[0].ajouterSegment(seg8);
+		branches[0].ajouterSegment(seg9);
+		branches[0].ajouterSegment(seg10);
+		branches[0].ajouterSegment(seg11);
 		setSegment(seg1);
 		setSegment(seg2);
 		setSegment(seg3);
@@ -99,14 +102,14 @@ public class Grille {
 		SegmentBranche seg17 = new SegmentBranche(14,8);
 		SegmentBranche seg18 = new SegmentBranche(15,8);
 		SegmentBranche seg19 = new SegmentBranche(16,9);
-		brancheDroite.ajouterSegment(seg12);
-		brancheDroite.ajouterSegment(seg13);
-		brancheDroite.ajouterSegment(seg14);
-		brancheDroite.ajouterSegment(seg15);
-		brancheDroite.ajouterSegment(seg16);
-		brancheDroite.ajouterSegment(seg17);
-		brancheDroite.ajouterSegment(seg18);
-		brancheDroite.ajouterSegment(seg19);
+		branches[0].ajouterSegment(seg12);
+		branches[0].ajouterSegment(seg13);
+		branches[0].ajouterSegment(seg14);
+		branches[0].ajouterSegment(seg15);
+		branches[0].ajouterSegment(seg16);
+		branches[0].ajouterSegment(seg17);
+		branches[0].ajouterSegment(seg18);
+		branches[0].ajouterSegment(seg19);
 		setSegment(seg12);
 		setSegment(seg13);
 		setSegment(seg14);
@@ -115,6 +118,10 @@ public class Grille {
 		setSegment(seg17);
 		setSegment(seg18);
 		setSegment(seg19);
+		
+		//Deux cases pour l'exemple
+		setCellule(1, 4, new Metal(1, 4));
+		setCellule(11, 10, new Bois(11, 10));
 	}
 	
 	/**
