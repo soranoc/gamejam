@@ -121,7 +121,11 @@ public class Grille {
 		
 		//Deux cases pour l'exemple
 		setCellule(1, 4, new Metal(1, 4));
-		setCellule(11, 10, new Bois(11, 10));
+		setCellule(14, 7, new Bois(14, 7));
+		setCellule(14, 6, new Bois(14, 6));
+		setCellule(14, 5, new Bois(14, 5));
+		setCellule(14, 4, new Bois(14, 4));
+		setCellule(14, 3, new Bois(14, 3));
 	}
 	
 	/**
