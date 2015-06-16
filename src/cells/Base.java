@@ -1,6 +1,5 @@
 package cells;
 
-import java.awt.Graphics;
 
 
 public class Base extends Cellule {
@@ -61,8 +60,7 @@ public class Base extends Cellule {
 	}
 
 	@Override
-	public void paint(Graphics g) {
-		// TODO Auto-generated method stub
-		
+	public String getUrlImg() {
+		return "/res/bloc_base";
 	}
 }

@@ -68,4 +68,9 @@ public class Vide extends Cellule{
 	public boolean isBase() {
 		return false;
 	}
+
+	@Override
+	public String getUrlImg() {
+		return null;
+	}
 }

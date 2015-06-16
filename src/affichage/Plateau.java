@@ -93,7 +93,7 @@ public class Plateau extends JPanel {
 	public void paint(Graphics g) {		
 		for(int i = 0; i < grille.getWidth(); i++)
 			for(int j = 0; j < grille.getHeight(); j++)
-				grille.getCellule(i, j).paint(g);
+				grille.getCellule(i, j).paint(g, this);
 	}
 
 	public String getMatiere() {

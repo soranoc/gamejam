@@ -1,6 +1,5 @@
 package cells;
 
-import java.awt.Graphics;
 
 
 
@@ -89,9 +88,8 @@ public class SegmentBranche extends Cellule {
 //	}
 	
 	@Override
-	public void paint(Graphics g) {
-		// TODO Auto-generated method stub
-		
+	public String getUrlImg() {
+		return "res/branche.jpg";
 	}
 
 }

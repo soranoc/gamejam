@@ -1,6 +1,5 @@
 package cells;
 
-import java.awt.Graphics;
 
 public class Metal extends Cellule {
 
@@ -60,9 +59,8 @@ public class Metal extends Cellule {
 	}
 
 	@Override
-	public void paint(Graphics g) {
-		// TODO Auto-generated method stub
-		
+	public String getUrlImg() {
+		return "res/bloc_metal.png";
 	}
 
 }

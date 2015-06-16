@@ -1,6 +1,5 @@
 package cells;
 
-import java.awt.Graphics;
 
 public class Verre extends Cellule {
 
@@ -59,9 +58,8 @@ public class Verre extends Cellule {
 	}
 
 	@Override
-	public void paint(Graphics g) {
-		// TODO Auto-generated method stub
-		
+	public String getUrlImg() {
+		return "/res/bloc_verre.png";
 	}
 
 }
