@@ -1,14 +1,22 @@
 package grille;
 
-import cells.Pierre;
+import java.awt.Graphics;
+
+import javax.swing.JPanel;
+
 import cells.Base;
 import cells.Bois;
 import cells.Cellule;
 import cells.Metal;
+import cells.Pierre;
 import cells.Verre;
 import cells.Vide;
 
-public class Pattern {
+public class Pattern extends JPanel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int xBase;
 	private int yBase;
 	private int width;
@@ -16,7 +24,7 @@ public class Pattern {
 	private Cellule[][] pattern;
 	private int nbEx;
 
-	public Pattern(int nbEx) {
+	public Pattern(int nbEx){
 		this.nbEx=nbEx;
 		if (nbEx==1){
 			width=3;
@@ -213,5 +221,12 @@ public class Pattern {
 
 	public void setHeight(int height) {
 		this.height = height;
+	}
+	
+	@Override
+	public void paint(Graphics g) {
+		for (int i = 0; i < pattern.length; i++)
+			for (int j = 0; j < pattern[0].length; j++)
+				pattern[i][j].paint(g);
 	}
 }
