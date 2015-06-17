@@ -8,6 +8,7 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import utils.Properties;
@@ -19,8 +20,8 @@ public class Plateau extends JPanel {
 
 	private Grille grille;
 	private static String matiere = "bois";
-	Pattern pat = new Pattern();
-
+	private Pattern pat = new Pattern();
+	private boolean fin = false;
 
 	/**
 	 * Constructeur privé qui initialise le MouseListener
@@ -55,43 +56,62 @@ public class Plateau extends JPanel {
 				int x = e.getX();
 				int y = e.getY();
 
-				try {
-					grille.getCellule(x / Cellule.SIZE, y / Cellule.SIZE)
-							.mouseClicked(e);
-					if (grille.getCellule(x / Cellule.SIZE, y / Cellule.SIZE).isDispo()) {
-						if (matiere.equals("base")) {
-							grille.setCellule(x / Cellule.SIZE, y
-									/ Cellule.SIZE, new Base(x / Cellule.SIZE,
-									y / Cellule.SIZE));
-						} else if (matiere.equals("verre")) {
-							grille.setCellule(x / Cellule.SIZE, y
-									/ Cellule.SIZE, new Verre(x / Cellule.SIZE,
-									y / Cellule.SIZE));
-						} else if (matiere.equals("metal")) {
-							grille.setCellule(x / Cellule.SIZE, y
-									/ Cellule.SIZE, new Metal(x / Cellule.SIZE,
-									y / Cellule.SIZE));
-						} else if (matiere.equals("pierre")) {
-							grille.setCellule(x / Cellule.SIZE, y
-									/ Cellule.SIZE, new Pierre(
-									x / Cellule.SIZE, y / Cellule.SIZE));
-						} else if (matiere.equals("bois")) {
-							grille.setCellule(x / Cellule.SIZE, y
-									/ Cellule.SIZE, new Bois(x / Cellule.SIZE,
-									y / Cellule.SIZE));
+				if (fin == false) {
+					try {
+						grille.getCellule(x / Cellule.SIZE, y / Cellule.SIZE)
+								.mouseClicked(e);
+						if (grille.getCellule(x / Cellule.SIZE,
+								y / Cellule.SIZE).isDispo()) {
+							if (matiere.equals("base")) {
+								if (grille.containsBase()) {
+									JOptionPane
+											.showMessageDialog(
+													null,
+													null,
+													"Base unique!",
+													JOptionPane.PLAIN_MESSAGE,
+													null);
+								} else {
+									grille.setCellule(x / Cellule.SIZE, y
+											/ Cellule.SIZE, new Base(x
+											/ Cellule.SIZE, y / Cellule.SIZE));
+								}
+							} else if (matiere.equals("verre")) {
+								grille.setCellule(x / Cellule.SIZE, y
+										/ Cellule.SIZE, new Verre(x
+										/ Cellule.SIZE, y / Cellule.SIZE));
+							} else if (matiere.equals("metal")) {
+								grille.setCellule(x / Cellule.SIZE, y
+										/ Cellule.SIZE, new Metal(x
+										/ Cellule.SIZE, y / Cellule.SIZE));
+							} else if (matiere.equals("pierre")) {
+								grille.setCellule(x / Cellule.SIZE, y
+										/ Cellule.SIZE, new Pierre(x
+										/ Cellule.SIZE, y / Cellule.SIZE));
+							} else if (matiere.equals("bois")) {
+								grille.setCellule(x / Cellule.SIZE, y
+										/ Cellule.SIZE, new Bois(x
+										/ Cellule.SIZE, y / Cellule.SIZE));
+							}
 						}
-					}
-					if(!grille.isOkay()){
-						System.out.println("Défaite");
-					}
-					else if(grille.containsBase()){
-						if(grille.contains(pat)){
-							System.out.println("Victoire!");
+						repaint();
+
+						if (!grille.isOkay()) {
+							fin = true;
+							JOptionPane.showMessageDialog(null, null,
+									"Défaite...", JOptionPane.PLAIN_MESSAGE,
+									null);
+						} else if (grille.containsBase()) {
+							if (grille.contains(pat)) {
+								fin = true;
+								JOptionPane.showMessageDialog(null, null,
+										"Victoire!", JOptionPane.PLAIN_MESSAGE,
+										null);
+							}
 						}
+					} catch (ArrayIndexOutOfBoundsException ex) {
+						System.err.println(ex.getMessage());
 					}
-					repaint();
-				} catch (ArrayIndexOutOfBoundsException ex) {
-					System.err.println(ex.getMessage());
 				}
 			}
 		});
