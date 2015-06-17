@@ -7,14 +7,22 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import utils.Properties;
-import cells.*;
+import cells.Base;
+import cells.Bois;
+import cells.Cellule;
+import cells.Metal;
+import cells.Pierre;
+import cells.Verre;
+import cells.Vide;
 
-public class Plateau extends JPanel {
+public class Plateau extends JPanel implements Observer {
 
 	private static final long serialVersionUID = 1L;
 
@@ -169,5 +177,18 @@ public class Plateau extends JPanel {
 	public static void setMatiere(String mat) {
 		matiere = mat;
 	}
+	
+	public Pattern getPat(){
+		return pat;
+	}
 
+	public void attach(Observer o){
+		
+	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		
+	}
 }
