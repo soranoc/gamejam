@@ -26,8 +26,8 @@ public class Plateau extends JPanel {
 	/**
 	 * Constructeur privé qui initialise le MouseListener
 	 */
-	private Plateau() {
-		pat = new Pattern(3);
+	private Plateau(int nbEx) {
+		pat = new Pattern(nbEx);
 		pat.getExemple();
 		addMouseListener(new MouseListener() {
 
@@ -127,8 +127,8 @@ public class Plateau extends JPanel {
 	 * 
 	 * @param grille
 	 */
-	public Plateau(Grille grille) {
-		this();
+	public Plateau(Grille grille, int nbEx) {
+		this(nbEx);
 		setPreferredSize(new Dimension(
 				Properties.WIDTH * Properties.SIZE_CELLS, Properties.HEIGHT
 						* Properties.SIZE_CELLS));
