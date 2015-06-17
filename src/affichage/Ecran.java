@@ -1,7 +1,6 @@
 package affichage;
 
 import grille.Grille;
-import grille.Pattern;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -22,21 +21,17 @@ public class Ecran extends JFrame{
 		setResizable(false);
 		
 		setLayout(new BorderLayout());
-		JPanel degueulasse = new JPanel();
+		JPanel pane = new JPanel();
 		Plateau p= new Plateau(grille);
-		degueulasse.setLayout(new GridLayout(2,1));
-		degueulasse.add(p);
-		degueulasse.add(new Tronc());
-		add(degueulasse, BorderLayout.NORTH);
+		pane.setLayout(new GridLayout(2,1));
+		pane.add(p);
+		pane.add(new Tronc());
+		add(pane, BorderLayout.NORTH);
 		add(new Selecteur(p), BorderLayout.SOUTH);
 		
 		//Test
 		System.out.println(grille.getBranches()[0].getPoidsRestant());
 		System.out.println(grille.getBranches()[1].getPoidsRestant());
-		
-		Pattern pat = new Pattern();
-		pat.getExemple();
-		System.out.println(grille.contains(pat));
 		
 		pack();
 		setVisible(true);

@@ -64,7 +64,7 @@ public class Selecteur extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				p.setMatiere("bois");
+				Plateau.setMatiere("bois");
 			}
 		});
 		
@@ -72,11 +72,11 @@ public class Selecteur extends JPanel {
 		boutonPierre.setPreferredSize(new Dimension(40, 40));	
 		boutonPierre.setToolTipText("Pierre");
 		boutons.add(boutonPierre);
-		boutonBois.addActionListener(new ActionListener() {
+		boutonPierre.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				p.setMatiere("pierre");
+				Plateau.setMatiere("pierre");
 			}
 		});
 		
@@ -84,11 +84,11 @@ public class Selecteur extends JPanel {
 		boutonMetal.setPreferredSize(new Dimension(40, 40));
 		boutonMetal.setToolTipText("Metal");
 		boutons.add(boutonMetal);
-		boutonBois.addActionListener(new ActionListener() {
+		boutonMetal.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				p.setMatiere("metal");
+				Plateau.setMatiere("metal");
 			}
 		});
 		
@@ -96,11 +96,11 @@ public class Selecteur extends JPanel {
 		boutonVerre.setPreferredSize(new Dimension(40, 40));
 		boutonVerre.setToolTipText("Verre");
 		boutons.add(boutonVerre);
-		boutonBois.addActionListener(new ActionListener() {
+		boutonVerre.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				p.setMatiere("verre");
+				Plateau.setMatiere("verre");
 			}
 		});
 		
@@ -108,11 +108,11 @@ public class Selecteur extends JPanel {
 		boutonBase.setPreferredSize(new Dimension(40, 40));	
 		boutonBase.setToolTipText("Base");
 		boutons.add(boutonBase);
-		boutonBois.addActionListener(new ActionListener() {
+		boutonBase.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				p.setMatiere("base");
+				Plateau.setMatiere("base");
 			}
 		});
 		

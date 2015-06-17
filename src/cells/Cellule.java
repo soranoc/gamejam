@@ -1,10 +1,14 @@
 package cells;
 
+import grille.Grille;
+
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
+
+import affichage.Ecran;
 
 public abstract class Cellule {
 
@@ -119,4 +123,25 @@ public abstract class Cellule {
 	abstract public int getPoids();
 
 	abstract public boolean isBase();
+
+	public boolean isDispo() {
+		if (isBranche()) {
+			return false;
+		}
+		if (isSupported()) {
+			return true;
+		}
+		return false;
+	}
+
+	private boolean isSupported() {
+		if (getY() >= Grille.HEIGHT) {
+			return false;
+		}
+		Cellule test = Ecran.getGrille().getCellule(getX(), getY()+1);
+		if (test.isBranche() || test.isBloc()){
+			return true;
+		}
+		return false;
+	}
 }

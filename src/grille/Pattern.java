@@ -1,16 +1,13 @@
 package grille;
 
-import cells.Base;
-import cells.Bois;
-import cells.Cellule;
-import cells.Vide;
+import cells.*;
 
 public class Pattern {
 	private int xBase;
 	private int yBase;
-	private int width = 5;
-	private int height = 5;
-	private Cellule [][] pattern = new Cellule[5][5];
+	private int width = 3;
+	private int height = 4;
+	private Cellule [][] pattern = new Cellule[width][height];
 	
 	public Pattern(){
 		fill();
@@ -23,8 +20,8 @@ public class Pattern {
 	}
 
 	private void fill(){
-		for(int i=0; i<5; ++i){
-			for(int j=0; j<5; ++j){
+		for(int i=0; i<width; ++i){
+			for(int j=0; j<height; ++j){
 				pattern[i][j]=new Vide(i, j);
 			}
 		}
@@ -81,13 +78,19 @@ public class Pattern {
 	 * Crée un pattern qui correspond à l'exemple de grille 
 	 */
 	public void getExemple(){
-		this.setXBase(2);
-		this.setYBase(4);
-		this.setCase(2, 0, new Bois(2,0));
+		this.setXBase(1);
+		this.setYBase(3);
+		this.setCase(0, 1, new Bois(0,1));
+		this.setCase(0, 2, new Metal(0,2));
+		this.setCase(0, 3, new Metal(0,3));
+		this.setCase(1, 0, new Bois(1,0));
+		this.setCase(1, 1, new Bois(1,1));
+		this.setCase(1, 2, new Verre(1,2));
+		this.setCase(1, 3, new Base(1,3));
 		this.setCase(2, 1, new Bois(2,1));
-		this.setCase(2, 2, new Bois(2,2));
-		this.setCase(2, 3, new Bois(2,3));
-		this.setCase(2, 4, new Base(2,4));
+		this.setCase(2, 2, new Metal(2,2));
+		this.setCase(2, 3, new Metal(2,3));
+
 
 	}
 
