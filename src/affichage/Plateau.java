@@ -84,8 +84,10 @@ public class Plateau extends JPanel {
 					if(!grille.isOkay()){
 						System.out.println("Défaite");
 					}
-					else if(grille.contains(pat)){
-						System.out.println("Victoire!");
+					else if(grille.containsBase()){
+						if(grille.contains(pat)){
+							System.out.println("Victoire!");
+						}
 					}
 					repaint();
 				} catch (ArrayIndexOutOfBoundsException ex) {

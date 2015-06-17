@@ -138,6 +138,9 @@ public abstract class Cellule {
 		if (getY() >= Grille.HEIGHT) {
 			return false;
 		}
+		if((getX()==8 || getX()==9) && getY() == 11){
+			return true;
+		}
 		Cellule test = Ecran.getGrille().getCellule(getX(), getY()+1);
 		if (test.isBranche() || test.isBloc()){
 			return true;
