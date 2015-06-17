@@ -4,8 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -146,7 +144,7 @@ public class Selecteur extends JFrame {
 		
 		final JButton boutonVide = new JButton(new ImageIcon("./res/boutons/vide.png"));
 		boutonVide.setPreferredSize(new Dimension(40, 40));	
-		boutonVide.setToolTipText("Base");
+		boutonVide.setToolTipText("Vide");
 		boutons3.add(boutonVide);
 		boutonVide.addActionListener(new ActionListener() {
 
