@@ -3,6 +3,8 @@ package cells;
 import java.util.ArrayList;
 import java.util.List;
 
+import affichage.Ecran;
+
 public class Branche {
 	List<SegmentBranche> segments = new ArrayList<SegmentBranche>();
 	private int poidsMax;
@@ -36,6 +38,16 @@ public class Branche {
 		return poidsMax - getPoidsTotal();
 	}
 
+	public boolean isAlmostBroken() {
+		if (getPoidsRestant() < getPoidsMax() / 5.0) {
+			for (int i = 0; i < segments.size(); ++i) {
+				segments.get(i).setOkay(false);
+			}
+			return true;
+		}
+		return false;
+	}
+
 	/**
 	 * 
 	 * @return true si la branche peut supporter son poids actuel
@@ -46,4 +58,16 @@ public class Branche {
 		}
 		return false;
 	}
+
+	public void casse() {
+		SegmentBranche c;
+		int size = segments.size();
+		for (int i = 0; i < size; ++i) {
+			c = segments.get(0);
+			c.casse();
+			segments.remove(c);
+			Ecran.getGrille().setCellule(c.getX(), c.getY(), new Vide(c.getX(), c.getY()));
+		}
+	}
+
 }

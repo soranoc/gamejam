@@ -119,12 +119,12 @@ public class Grille {
 		setSegment(seg19);
 
 		// Cases pour l'exemple
-//		setCellule(1, 4, new Metal(1, 4));
-//		setCellule(14, 7, new Base(14, 7));
-//		setCellule(14, 6, new Bois(14, 6));
-//		setCellule(14, 5, new Bois(14, 5));
-//		setCellule(14, 4, new Bois(14, 4));
-//		setCellule(14, 3, new Bois(14, 3));
+		// setCellule(1, 4, new Metal(1, 4));
+		// setCellule(14, 7, new Base(14, 7));
+		// setCellule(14, 6, new Bois(14, 6));
+		// setCellule(14, 5, new Bois(14, 5));
+		// setCellule(14, 4, new Bois(14, 4));
+		// setCellule(14, 3, new Bois(14, 3));
 	}
 
 	/**
@@ -189,7 +189,15 @@ public class Grille {
 	 */
 	public boolean contains(Pattern p) {
 		int[] coordBase = coordBase();
-		int[] coordDebutTest = new int[] { coordBase[0] - p.getXBase(), //Permet de localiser la première case qui sera testée
+		int[] coordDebutTest = new int[] { coordBase[0] - p.getXBase(), // Permet
+																		// de
+																		// localiser
+																		// la
+																		// première
+																		// case
+																		// qui
+																		// sera
+																		// testée
 				coordBase[1] - p.getYBase() };
 
 		if (coordBase[0] < p.placeGauche()) {
@@ -204,34 +212,51 @@ public class Grille {
 		if ((getHeight() - coordBase[1] - 1) < p.placeBas()) {
 			return false;
 		}
-		
-		for(int i=0; i<p.getWidth(); ++i){
-			for(int j=0; j<p.getHeight(); ++j){
-				if(!getCellule(coordDebutTest[0]+i, coordDebutTest[1]+j).getClass().equals(p.getCase(i, j).getClass())){
+
+		for (int i = 0; i < p.getWidth(); ++i) {
+			for (int j = 0; j < p.getHeight(); ++j) {
+				if (!getCellule(coordDebutTest[0] + i, coordDebutTest[1] + j)
+						.getClass().equals(p.getCase(i, j).getClass())) {
 					return false;
 				}
 			}
 		}
 		return true;
 	}
-	
-	public boolean isOkay(){
-		for(int i=0; i<branches.length;++i){
-			if(!branches[i].isOkay()){
-				return false;
+
+	public boolean isOkay() {
+		for (int i = 0; i < branches.length; ++i) {
+			if (branches[i] != null && !branches[i].isOkay()) {
+				casse(i);
+			}
+			if (branches[i] != null && branches[i].isAlmostBroken()) {
+				System.out.println("La branche n°" + i
+						+ " est presque cassée!!");
 			}
 		}
-		return true;
+		for(int i=0;i<branches.length; ++i){
+			if(branches[i]!=null){
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public boolean containsBase() {
-		for(int i=0; i<WIDTH; ++i){
-			for(int j=0; j<HEIGHT; ++j){
-				if(getCellule(i, j).isBase()){
+		for (int i = 0; i < WIDTH; ++i) {
+			for (int j = 0; j < HEIGHT; ++j) {
+				if (getCellule(i, j).isBase()) {
 					return true;
 				}
 			}
 		}
 		return false;
+	}
+
+	private void casse(int index) {
+		if (branches[index] != null) {
+			branches[index].casse();
+			branches[index] = null;
+		}
 	}
 }
