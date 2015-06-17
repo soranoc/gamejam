@@ -92,6 +92,10 @@ public class Plateau extends JPanel {
 								grille.setCellule(x / Cellule.SIZE, y
 										/ Cellule.SIZE, new Bois(x
 										/ Cellule.SIZE, y / Cellule.SIZE));
+							} else if (matiere.equals("vide")){
+								grille.setCellule(x / Cellule.SIZE, y
+										/ Cellule.SIZE, new Vide(x
+										/ Cellule.SIZE, y / Cellule.SIZE));
 							}
 						}
 						repaint();
@@ -100,13 +104,13 @@ public class Plateau extends JPanel {
 							fin = true;
 							JOptionPane.showMessageDialog(null, null,
 									"Défaite...", JOptionPane.PLAIN_MESSAGE,
-									null);
+									null); // TODO Ajouter image Robot
 						} else if (grille.containsBase()) {
 							if (grille.contains(pat)) {
 								fin = true;
 								JOptionPane.showMessageDialog(null, null,
 										"Victoire!", JOptionPane.PLAIN_MESSAGE,
-										null);
+										null); // TODO Ajouter image Robot
 							}
 						}
 					} catch (ArrayIndexOutOfBoundsException ex) {
