@@ -13,6 +13,7 @@ public class Menu {
 	public Menu() {
 		final JFrame frame = new JFrame("House on Tree");
 		frame.setPreferredSize(new Dimension(300, 80));
+		frame.setLocation(300,300);
 		JPanel pane = new JPanel();
 		JButton niv1 = new JButton("1");
 		niv1.addActionListener(new ActionListener() {

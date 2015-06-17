@@ -1,5 +1,6 @@
 package grille;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
@@ -13,58 +14,59 @@ import cells.Verre;
 import cells.Vide;
 
 public class Pattern extends JPanel{
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
+	
 	private int xBase;
 	private int yBase;
-	private int width;
-	private int height;
+	private int w;
+	private int h;
 	private Cellule[][] pattern;
 	private int nbEx;
 
 	public Pattern(int nbEx){
+		
 		this.nbEx=nbEx;
 		if (nbEx==1){
-			width=3;
-			height=4;
+			w=3;
+			h=4;
 		}
 		else if (nbEx ==2){
-			width=4;
-			height=4;
+			w=4;
+			h=4;
 		}
 		else if (nbEx ==3){
-			width=5;
-			height=6;
+			w=5;
+			h=6;
 		}
-		pattern = new Cellule[width][height];
+		pattern = new Cellule[w][h];
 		fill();
-
 	}
 
 	public Pattern(int nbEx, int xBase, int yBase) {
+		
 		this.setXBase(xBase);
 		this.setYBase(yBase);
 		if (nbEx==1){
-			width=3;
-			height=4;
+			w=3;
+			h=4;
 		}
 		else if (nbEx ==2){
-			width=4;
-			height=4;
+			w=4;
+			h=4;
 		}
-		pattern = new Cellule[width][height];
-
+		pattern = new Cellule[w][h];
 		fill();
 	}
 
 	private void fill() {
-		for (int i = 0; i < width; ++i) {
-			for (int j = 0; j < height; ++j) {
+		for (int i = 0; i < w; ++i) {
+			for (int j = 0; j < h; ++j) {
 				pattern[i][j] = new Vide(i, j);
 			}
 		}
+		
+		repaint();
 	}
 
 	public void setCase(Cellule c) {
@@ -135,6 +137,10 @@ public class Pattern extends JPanel{
 			this.setCase(new Bois(2, 1));
 			this.setCase(new Metal(2, 2));
 			this.setCase(new Metal(2, 3));
+			
+			setPreferredSize(new Dimension(150,170));
+			
+
 		}
 		else if (nbEx == 2) {
 			this.setXBase(0);
@@ -156,6 +162,9 @@ public class Pattern extends JPanel{
 			this.setCase(new Bois(3,1));
 			this.setCase(new Pierre(3,2));
 			this.setCase(new Pierre(3,3));
+			
+			setPreferredSize(new Dimension(160,170));
+
 		}
 		else if (nbEx ==3){
 			this.setXBase(2);
@@ -189,44 +198,35 @@ public class Pattern extends JPanel{
 			this.setCase(new Pierre(4, 3));
 			this.setCase(new Pierre(4, 4));
 			this.setCase(new Pierre(4, 5));
-
-
-
-
-
-
-
-
-
-
-
-
-
+			
+			setPreferredSize(new Dimension(170,170));
 
 		}
 		
 	}
 
-	public int getWidth() {
-		return width;
-	}
-
-	public void setWidth(int width) {
-		this.width = width;
-	}
-
-	public int getHeight() {
-		return height;
-	}
-
-	public void setHeight(int height) {
-		this.height = height;
-	}
+//	public int getWidth() {
+//		return w;
+//	}
+//
+//	public void setWidth(int width) {
+//		this.w = width;
+//	}
+//
+//	public int getHeight() {
+//		return h;
+//	}
+//
+//	public void setHeight(int height) {
+//		this.h = height;
+//	}
 	
 	@Override
 	public void paint(Graphics g) {
+		
 		for (int i = 0; i < pattern.length; i++)
-			for (int j = 0; j < pattern[0].length; j++)
+			for (int j = 0; j < pattern[0].length; j++){
 				pattern[i][j].paint(g);
+			}
 	}
 }

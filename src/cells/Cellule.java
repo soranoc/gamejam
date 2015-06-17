@@ -40,6 +40,7 @@ public abstract class Cellule {
 	public int getX() {
 		return x;
 	}
+	
 
 	/**
 	 * Modifie coordonnée X

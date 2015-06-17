@@ -1,5 +1,7 @@
 package affichage;
 
+import grille.Pattern;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,7 +17,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Selecteur extends JFrame {
@@ -25,7 +26,7 @@ public class Selecteur extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public Selecteur(final Plateau p) throws IOException {
+	public Selecteur(Plateau p) throws IOException {
 		
 		BufferedImage myImage = ImageIO.read(new File("./res/menu.png"));
 		this.setContentPane(new ImagePanel(myImage));
@@ -37,14 +38,16 @@ public class Selecteur extends JFrame {
 		this.setTitle("Menu");
 		this.setResizable(false);
 		this.setLayout(new FlowLayout(HEIGHT));
+			
+		JLabel vide = new JLabel("");
+		vide.setPreferredSize(new Dimension(250, 15));
 
 		JLabel boutonsLabel = new JLabel("");
 		boutonsLabel.setPreferredSize(new Dimension(250, 15));
+		
 		JLabel infosLabel = new JLabel("");
 		infosLabel.setPreferredSize(new Dimension(180, 15));
 		
-		JPanel infos = new JPanel(new FlowLayout(HEIGHT));
-		infos.setBackground(new Color(0,0,0,1));
 		JPanel boutons = new JPanel(new BorderLayout());
 		boutons.setBackground(new Color(0,0,0,1));
 		boutons.setPreferredSize(new Dimension(210,150));
@@ -58,9 +61,11 @@ public class Selecteur extends JFrame {
 		boutons2.setBackground(new Color(0,0,0,1));
 		JPanel boutons3 = new JPanel(fl);
 		boutons3.setBackground(new Color(0,0,0,1));
+		
+		Pattern pat = p.getPat();
 
 		
-		JButton pattern = new JButton(new ImageIcon("./res/pattern.png"));
+		/*JButton pattern = new JButton(new ImageIcon("./res/pattern.png"));
 		pattern.setToolTipText("Modèle");
 		pattern.setPreferredSize(new Dimension(180, 180));
 		pattern.addActionListener(new ActionListener() {
@@ -77,9 +82,7 @@ public class Selecteur extends JFrame {
 				JLabel picLabel = new JLabel(new ImageIcon(image));
 				JOptionPane.showMessageDialog(null, picLabel, "Modèle", JOptionPane.PLAIN_MESSAGE, null);
 			}
-		});
-		
-		infos.add(pattern);
+		});*/
 		
 
 		final JButton boutonBois = new JButton(new ImageIcon("./res/boutons/bloc_bois.png"));
@@ -155,7 +158,8 @@ public class Selecteur extends JFrame {
 		});
 		
 		this.add(infosLabel);
-		this.add(infos);
+		this.add(vide);
+		this.add(pat);
 		this.add(boutonsLabel);
 		
 		boutons.add(boutons1, BorderLayout.NORTH);
