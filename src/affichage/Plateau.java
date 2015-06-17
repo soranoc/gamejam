@@ -20,13 +20,14 @@ public class Plateau extends JPanel {
 
 	private Grille grille;
 	private static String matiere = "bois";
-	private Pattern pat = new Pattern();
+	private Pattern pat;
 	private boolean fin = false;
 
 	/**
 	 * Constructeur privé qui initialise le MouseListener
 	 */
 	private Plateau() {
+		pat = new Pattern(3);
 		pat.getExemple();
 		addMouseListener(new MouseListener() {
 

@@ -45,6 +45,9 @@ public class Branche {
 			}
 			return true;
 		}
+		for (int i = 0; i < segments.size(); ++i) {
+			segments.get(i).setOkay(true);
+		}
 		return false;
 	}
 

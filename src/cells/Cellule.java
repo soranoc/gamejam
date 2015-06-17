@@ -135,11 +135,11 @@ public abstract class Cellule {
 	}
 
 	private boolean isSupported() {
-		if (getY() >= Grille.HEIGHT) {
-			return false;
-		}
 		if((getX()==8 || getX()==9) && getY() == 11){
 			return true;
+		}
+		if (getY() >= Grille.HEIGHT-1) {
+			return false;
 		}
 		Cellule test = Ecran.getGrille().getCellule(getX(), getY()+1);
 		if (test.isBranche() || test.isBloc()){

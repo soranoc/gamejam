@@ -230,7 +230,7 @@ public class Grille {
 				casse(i);
 			}
 			if (branches[i] != null && branches[i].isAlmostBroken()) {
-				System.out.println("La branche n°" + i
+				System.out.println("La branche n°" + (i+1)
 						+ " est presque cassée!!");
 			}
 		}
