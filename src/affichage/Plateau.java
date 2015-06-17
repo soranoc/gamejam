@@ -7,8 +7,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.Observable;
-import java.util.Observer;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -22,7 +20,7 @@ import cells.Pierre;
 import cells.Verre;
 import cells.Vide;
 
-public class Plateau extends JPanel implements Observer {
+public class Plateau extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 
@@ -30,11 +28,13 @@ public class Plateau extends JPanel implements Observer {
 	private static String matiere = "bois";
 	private Pattern pat;
 	private boolean fin = false;
+	private Ecran ecr;
 
 	/**
 	 * Constructeur privé qui initialise le MouseListener
 	 */
-	private Plateau(int nbEx) {
+	private Plateau(int nbEx, Ecran e) {
+		ecr=e;
 		pat = new Pattern(nbEx);
 		pat.getExemple();
 		addMouseListener(new MouseListener() {
@@ -107,6 +107,7 @@ public class Plateau extends JPanel implements Observer {
 										/ Cellule.SIZE, y / Cellule.SIZE));
 							}
 						}
+						ecr.repaint();
 						repaint();
 
 						if (!grille.isOkay()) {
@@ -135,8 +136,8 @@ public class Plateau extends JPanel implements Observer {
 	 * 
 	 * @param grille
 	 */
-	public Plateau(Grille grille, int nbEx) {
-		this(nbEx);
+	public Plateau(Grille grille, int nbEx, Ecran ecr) {
+		this(nbEx, ecr);
 		setPreferredSize(new Dimension(
 				Properties.WIDTH * Properties.SIZE_CELLS, Properties.HEIGHT
 						* Properties.SIZE_CELLS));
@@ -180,15 +181,5 @@ public class Plateau extends JPanel implements Observer {
 	
 	public Pattern getPat(){
 		return pat;
-	}
-
-	public void attach(Observer o){
-		
-	}
-
-	@Override
-	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
-		
 	}
 }

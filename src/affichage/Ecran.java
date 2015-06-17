@@ -38,7 +38,7 @@ public class Ecran extends JFrame{
 //		JPanel pane = new JPanel();
 		//pane.setLayout(new GridLayout(2,1));
 		
-		Plateau p= new Plateau(grille, nbEx);	
+		Plateau p= new Plateau(grille, nbEx, this);	
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 0;
