@@ -1,8 +1,4 @@
 package cells;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.util.Random;
 
 
 
@@ -14,15 +10,6 @@ public class Vide extends Cellule{
 
 	public String toString() {
 		return "Cellule Vide [x=" + getX() + ", y=" + getY() + "]";
-	}
-
-	@Override
-	public void paint(Graphics g) {
-		Graphics2D g2d = (Graphics2D) g;
-		
-		g2d.setColor(new Color(new Random().nextInt(100),new Random().nextInt(256),0));
-		
-		g2d.fillRect(getPixelX(), getPixelY(), Cellule.SIZE, Cellule.SIZE);
 	}
 
 	@Override
@@ -72,6 +59,6 @@ public class Vide extends Cellule{
 
 	@Override
 	public String getUrlImg() {
-		return null;
+		return "/res/vide.png";
 	}
 }

@@ -2,12 +2,15 @@ package affichage;
 
 import grille.Grille;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.GridLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 
 public class Ecran extends JFrame{
@@ -15,34 +18,47 @@ public class Ecran extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private static final Grille grille = new Grille();
 	
-	public Ecran() {
+	public Ecran() throws IOException {
+		
 		super("House on Tree");
-		setPreferredSize(new Dimension(575,800));
+		
+		
+		BufferedImage myImage = ImageIO.read(new File("./res/fond.png"));
+		this.setContentPane(new ImagePanel(myImage));
+		
+		
+		setPreferredSize(new Dimension(725,790));
 		setResizable(false);
 		
-		setLayout(new BorderLayout());
-		JPanel pane = new JPanel();
-		Plateau p= new Plateau(grille);
-		pane.setLayout(new GridLayout(2,1));
-		pane.add(p);
-		pane.add(new Tronc());
-		add(pane, BorderLayout.NORTH);
-		add(new Selecteur(p), BorderLayout.SOUTH);
+		GridBagConstraints c = new GridBagConstraints();
+		setLayout(new GridBagLayout());
 		
-		//Test
-		System.out.println(grille.getBranches()[0].getPoidsRestant());
-		System.out.println(grille.getBranches()[1].getPoidsRestant());
+		
+		
+//		JPanel pane = new JPanel();
+		//pane.setLayout(new GridLayout(2,1));
+		
+		Plateau p= new Plateau(grille);	
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.gridx = 0;
+		c.gridy = 0;
+		this.add(p);
+		
+		
+		
+		Selecteur s = new Selecteur(p);
+//		
+//		//Test
+//		System.out.println(grille.getBranches()[0].getPoidsRestant());
+//		System.out.println(grille.getBranches()[1].getPoidsRestant());
 		
 		pack();
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}
 	
 	public static Grille getGrille(){
 		return grille;
-	}
-	
-	public static void main(String[] args) {
-		new Ecran();
 	}
 
 }
