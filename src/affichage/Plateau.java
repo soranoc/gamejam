@@ -93,82 +93,63 @@ public class Plateau extends JPanel {
 									grille.setCellule(x / Cellule.SIZE, y
 											/ Cellule.SIZE, new Base(x
 											/ Cellule.SIZE, y / Cellule.SIZE));
-									SonBase son = new SonBase();
-									son.jouer();
-									try {
-										wait(1000);
-									} catch (InterruptedException e1) {
-										// TODO Auto-generated catch block
-										e1.printStackTrace();
+									if (sound == true) {
+										SonBase son = new SonBase();
+										son.jouer();
+										son.arreter();
 									}
-									son.arreter();
 
 								}
 							} else if (matiere.equals("verre")) {
 								grille.setCellule(x / Cellule.SIZE, y
 										/ Cellule.SIZE, new Verre(x
 										/ Cellule.SIZE, y / Cellule.SIZE));
-								SonVerre son = new SonVerre();
-								son.jouer();
-								try {
-									wait(1000);
-								} catch (InterruptedException e1) {
-									// TODO Auto-generated catch block
-									e1.printStackTrace();
+								if (sound == true) {
+									SonVerre son = new SonVerre();
+									son.jouer();
+									son.arreter();
 								}
-								son.arreter();
-								
+
 							} else if (matiere.equals("metal")) {
 								grille.setCellule(x / Cellule.SIZE, y
 										/ Cellule.SIZE, new Metal(x
 										/ Cellule.SIZE, y / Cellule.SIZE));
-								SonMetal son= new SonMetal();
-								son.jouer();
-								try {
-									wait(1000);
-								} catch (InterruptedException e1) {
-									// TODO Auto-generated catch block
-									e1.printStackTrace();
+								if (sound == true) {
+									SonMetal son = new SonMetal();
+									son.jouer();
+									son.arreter();
 								}
-								son.arreter();
 
 							} else if (matiere.equals("pierre")) {
 								grille.setCellule(x / Cellule.SIZE, y
 										/ Cellule.SIZE, new Pierre(x
 										/ Cellule.SIZE, y / Cellule.SIZE));
-								
-								SonPierre son = new SonPierre();
-								son.jouer();
-								try {
-									wait(1000);
-								} catch (InterruptedException e1) {
-									// TODO Auto-generated catch block
-									e1.printStackTrace();
+								if (sound == true) {
+									SonPierre son = new SonPierre();
+									son.jouer();
+									son.arreter();
 								}
-								son.arreter();
 
 							} else if (matiere.equals("bois")) {
 								grille.setCellule(x / Cellule.SIZE, y
 										/ Cellule.SIZE, new Bois(x
 										/ Cellule.SIZE, y / Cellule.SIZE));
-								SonBois son = new SonBois();
-								son.jouer();
-								System.out.println("pipoul");
-								son.arreter();
+								if (sound == true) {
+									SonBois son = new SonBois();
+									son.jouer();
+									son.arreter();
+								}
 
 							} else if (matiere.equals("vide")) {
 								grille.setCellule(x / Cellule.SIZE, y
 										/ Cellule.SIZE, new Vide(x
 										/ Cellule.SIZE, y / Cellule.SIZE));
-								SonErase son = new SonErase();
-								son.jouer();
-								try {
-									wait(1000);
-								} catch (InterruptedException e1) {
-									// TODO Auto-generated catch block
-									e1.printStackTrace();
+
+								if (sound == true) {
+									SonErase son = new SonErase();
+									son.jouer();
+									son.arreter();
 								}
-								son.arreter();
 							}
 						}
 						ecr.repaint();
