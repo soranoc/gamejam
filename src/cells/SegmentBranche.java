@@ -141,11 +141,13 @@ public class SegmentBranche extends Cellule {
 	}
 
 	public void infos(Grille grille) {
-		for(int i=0; i<grille.getBranches().length; ++i){
-			if(grille.getBranches()[i].containsSeg(this)){
-				grille.getBranches()[i].infos(i);
+		for (int i = 0; i < grille.getBranches().length; ++i) {
+			if (grille.getBranches()[i] != null) {
+				if (grille.getBranches()[i].containsSeg(this)) {
+					grille.getBranches()[i].infos(i);
+				}
 			}
-				
+
 		}
 	}
 
