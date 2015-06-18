@@ -213,8 +213,8 @@ public class Grille {
 			return false;
 		}
 
-		for (int i = 0; i < p.getWidth(); ++i) {
-			for (int j = 0; j < p.getHeight(); ++j) {
+		for (int i = 0; i < p.getW(); ++i) {
+			for (int j = 0; j < p.getH(); ++j) {
 				if (!getCellule(coordDebutTest[0] + i, coordDebutTest[1] + j)
 						.getClass().equals(p.getCase(i, j).getClass())) {
 					return false;
@@ -230,12 +230,12 @@ public class Grille {
 				casse(i);
 			}
 			if (branches[i] != null && branches[i].isAlmostBroken()) {
-				System.out.println("La branche n°" + (i+1)
+				System.out.println("La branche n°" + (i + 1)
 						+ " est presque cassée!!");
 			}
 		}
-		for(int i=0;i<branches.length; ++i){
-			if(branches[i]!=null){
+		for (int i = 0; i < branches.length; ++i) {
+			if (branches[i] != null) {
 				return true;
 			}
 		}
@@ -259,5 +259,5 @@ public class Grille {
 			branches[index] = null;
 		}
 	}
-	
+
 }

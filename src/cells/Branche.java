@@ -3,6 +3,8 @@ package cells;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import affichage.Ecran;
 
 public class Branche {
@@ -69,8 +71,20 @@ public class Branche {
 			c = segments.get(0);
 			c.casse();
 			segments.remove(c);
-			Ecran.getGrille().setCellule(c.getX(), c.getY(), new Vide(c.getX(), c.getY()));
+			Ecran.getGrille().setCellule(c.getX(), c.getY(),
+					new Vide(c.getX(), c.getY()));
 		}
+	}
+
+	public boolean containsSeg(SegmentBranche sb) {
+		return segments.contains(sb);
+	}
+
+	public void infos(int i) {
+		JOptionPane.showMessageDialog(null, "" + getPoidsTotal() + "/"
+				+ getPoidsMax(), "Branche n°" + (i + 1),
+				JOptionPane.PLAIN_MESSAGE);
+
 	}
 
 }

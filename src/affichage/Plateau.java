@@ -19,8 +19,9 @@ import cells.Metal;
 import cells.Pierre;
 import cells.Verre;
 import cells.Vide;
+import cells.SegmentBranche;
 
-public class Plateau extends JPanel{
+public class Plateau extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
@@ -34,7 +35,7 @@ public class Plateau extends JPanel{
 	 * Constructeur privé qui initialise le MouseListener
 	 */
 	private Plateau(int nbEx, Ecran e) {
-		ecr=e;
+		ecr = e;
 		pat = new Pattern(nbEx);
 		addMouseListener(new MouseListener() {
 
@@ -69,16 +70,18 @@ public class Plateau extends JPanel{
 						grille.getCellule(x / Cellule.SIZE, y / Cellule.SIZE)
 								.mouseClicked(e);
 						if (grille.getCellule(x / Cellule.SIZE,
+								y / Cellule.SIZE).isBranche()) {
+							SegmentBranche cell = (SegmentBranche) grille
+									.getCellule(x / Cellule.SIZE, y
+											/ Cellule.SIZE);
+							cell.infos(grille);
+						} else if (grille.getCellule(x / Cellule.SIZE,
 								y / Cellule.SIZE).isDispo()) {
 							if (matiere.equals("base")) {
 								if (grille.containsBase()) {
-									JOptionPane
-											.showMessageDialog(
-													null,
-													null,
-													"Base unique!",
-													JOptionPane.PLAIN_MESSAGE,
-													null);
+									JOptionPane.showMessageDialog(null, null,
+											"Base unique!",
+											JOptionPane.PLAIN_MESSAGE, null);
 								} else {
 									grille.setCellule(x / Cellule.SIZE, y
 											/ Cellule.SIZE, new Base(x
@@ -100,7 +103,7 @@ public class Plateau extends JPanel{
 								grille.setCellule(x / Cellule.SIZE, y
 										/ Cellule.SIZE, new Bois(x
 										/ Cellule.SIZE, y / Cellule.SIZE));
-							} else if (matiere.equals("vide")){
+							} else if (matiere.equals("vide")) {
 								grille.setCellule(x / Cellule.SIZE, y
 										/ Cellule.SIZE, new Vide(x
 										/ Cellule.SIZE, y / Cellule.SIZE));
@@ -177,8 +180,8 @@ public class Plateau extends JPanel{
 	public static void setMatiere(String mat) {
 		matiere = mat;
 	}
-	
-	public Pattern getPat(){
+
+	public Pattern getPat() {
 		return pat;
 	}
 }

@@ -1,5 +1,6 @@
 package cells;
 
+import grille.Grille;
 import affichage.Ecran;
 
 public class SegmentBranche extends Cellule {
@@ -137,6 +138,15 @@ public class SegmentBranche extends Cellule {
 				Ecran.getGrille().setCellule(getX(), y, new Vide(getX(), y));
 		}
 
+	}
+
+	public void infos(Grille grille) {
+		for(int i=0; i<grille.getBranches().length; ++i){
+			if(grille.getBranches()[i].containsSeg(this)){
+				grille.getBranches()[i].infos(i);
+			}
+				
+		}
 	}
 
 }

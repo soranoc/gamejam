@@ -87,19 +87,19 @@ public class Pattern extends JPanel{
 	}
 
 	public int placeGauche() {
-		return getWidth() - (getWidth() - getXBase());
+		return getW() - (getW() - getXBase());
 	}
 
 	public int placeDroite() {
-		return getWidth() - (getXBase() + 1);
+		return getW() - (getXBase() + 1);
 	}
 
 	public int placeHaut() {
-		return getHeight() - (getHeight() - getYBase());
+		return getH() - (getH() - getYBase());
 	}
 
 	public int placeBas() {
-		return getHeight() - (getYBase() + 1);
+		return getH() - (getYBase() + 1);
 	}
 
 	/**
@@ -190,21 +190,21 @@ public class Pattern extends JPanel{
 		
 	}
 
-//	public int getWidth() {
-//		return w;
-//	}
-//
-//	public void setWidth(int width) {
-//		this.w = width;
-//	}
-//
-//	public int getHeight() {
-//		return h;
-//	}
-//
-//	public void setHeight(int height) {
-//		this.h = height;
-//	}
+	public int getW() {
+		return w;
+	}
+
+	public void setW(int width) {
+		this.w = width;
+	}
+
+	public int getH() {
+		return h;
+	}
+
+	public void setH(int height) {
+		this.h = height;
+	}
 	
 	@Override
 	public void paint(Graphics g) {
