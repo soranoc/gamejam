@@ -35,6 +35,7 @@ public class Plateau extends JPanel {
 	private static String matiere = "bois";
 	private Pattern pat;
 	private boolean fin = false;
+	private static boolean sound = false;
 	private Ecran ecr;
 
 	/**
@@ -244,5 +245,13 @@ public class Plateau extends JPanel {
 
 	public Pattern getPat() {
 		return pat;
+	}
+
+	public static boolean getSound() {
+		return sound;
+	}
+
+	public static void setSound(boolean son) {
+		sound = son;
 	}
 }

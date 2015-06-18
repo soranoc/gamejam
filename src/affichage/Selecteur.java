@@ -19,6 +19,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.sun.security.auth.module.JndiLoginModule;
+
 public class Selecteur extends JFrame {
 	private Plateau p;
 	/**
@@ -171,8 +173,38 @@ public class Selecteur extends JFrame {
 		pack();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
-	}
+		
+		
+		
+		//TODO Ajouter ce bouton et ce label dans le panel 
+		final JButton boutonSon = new JButton(new ImageIcon("./res/boutons/speaker.png"));
+		boutonVide.setPreferredSize(new Dimension(40, 40));	
+		boutonVide.setToolTipText("Activer/Désactiver le son");
+		// panelSon.add(boutonVide);
+		boutonSon.addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(Plateau.getSound()==true){
+					Plateau.setSound(false);
+				}
+				else{
+					Plateau.setSound(true);
+				}
+			}
+		});
+		
+		JLabel Label;
+
+		if(Plateau.getSound()==true){
+			Label = new JLabel("On");
+		}
+		else{
+			Label = new JLabel("Off");
+		}
+		//END-TODO
+	}
+	
 	public Plateau getP() {
 		return p;
 	}
