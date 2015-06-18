@@ -1,5 +1,6 @@
 package grille;
 
+import affichage.Plateau;
 import cells.Branche;
 import cells.Cellule;
 import cells.SegmentBranche;
@@ -265,15 +266,30 @@ public class Grille {
 		}
 	}
 
-	public void replacerBlocs() {
+	public void replacerBlocs(final Plateau p) {
 		boolean done = false;
-		while (done == false) {
+		while (!done) {
 			done = true;
-			for (int i = 0; i < getWidth()-1; ++i) {
-				for (int j = 0; j < getHeight()-1; ++j) {
-					if (!grille[i][j].isSupported()) {
+			for (int i = 0; i < getWidth() - 1; ++i) {
+				for (int j = 0; j < getHeight() - 1; ++j) {
+					if (!grille[i][j].isEmpty() && !grille[i][j].isSupported()) {
 						descendre(grille[i][j]);
 						done = false;
+						grille[i][j].paint(p.getGraphics());
+						System.out.println(grille[i][j + 1]);
+						/*
+						 * TODO Tenter de réparer ça pour avoir une chute bloc
+						 * par bloc et pas un truc qui tombe tout d'un coup et
+						 * qui est sérieusement tout pourri(CtbLol, dixit
+						 * Clément le rigolo)
+						p.repaint();
+						p.repaintEcran();
+						try {
+							Thread.sleep(50);
+						} catch (InterruptedException e) {
+							System.err.println("Grille : replacerBloc : Thread qui plante");
+						}
+						*/
 					}
 				}
 			}
@@ -282,9 +298,10 @@ public class Grille {
 	}
 
 	private void descendre(Cellule cellule) {
-		grille[cellule.getX()][ cellule.getY()+1] = cellule;
-		grille[cellule.getX()][ cellule.getY()] = new Vide(cellule.getX(), cellule.getY());
-		cellule.setY(cellule.getY()+1);
-		
+		grille[cellule.getX()][cellule.getY() + 1] = cellule;
+		grille[cellule.getX()][cellule.getY()] = new Vide(cellule.getX(),
+				cellule.getY());
+		cellule.setY(cellule.getY() + 1);
+
 	}
 }

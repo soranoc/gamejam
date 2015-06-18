@@ -4,7 +4,7 @@ import java.applet.Applet;
 import java.applet.AudioClip;
 import java.net.URL;
 
-public class SonPierre {
+public class SonPierre extends Thread {
 	private URL url;
 	private AudioClip sound;
 	
