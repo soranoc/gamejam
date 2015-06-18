@@ -123,7 +123,7 @@ public class Pattern extends JPanel{
 			this.setCase(new Metal(2, 2));
 			this.setCase(new Metal(2, 3));
 			
-			setPreferredSize(new Dimension(150,170));
+			setPreferredSize(new Dimension(150,230));
 			
 
 		}
@@ -148,7 +148,7 @@ public class Pattern extends JPanel{
 			this.setCase(new Pierre(3,2));
 			this.setCase(new Pierre(3,3));
 			
-			setPreferredSize(new Dimension(160,170));
+			setPreferredSize(new Dimension(160,230));
 
 		}
 		else if (nbEx ==3){
@@ -184,7 +184,7 @@ public class Pattern extends JPanel{
 			this.setCase(new Pierre(4, 4));
 			this.setCase(new Pierre(4, 5));
 			
-			setPreferredSize(new Dimension(170,170));
+			setPreferredSize(new Dimension(170,230));
 
 		}
 		

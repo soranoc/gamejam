@@ -19,8 +19,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.sun.security.auth.module.JndiLoginModule;
-
 public class Selecteur extends JFrame {
 	private Plateau p;
 	/**
@@ -66,26 +64,7 @@ public class Selecteur extends JFrame {
 		
 		Pattern pat = p.getPat();
 
-		
-		/*JButton pattern = new JButton(new ImageIcon("./res/pattern.png"));
-		pattern.setToolTipText("Modèle");
-		pattern.setPreferredSize(new Dimension(180, 180));
-		pattern.addActionListener(new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				BufferedImage image = null;
-				try {
-					image = ImageIO.read(new File("./res/pattern.png"));
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				JLabel picLabel = new JLabel(new ImageIcon(image));
-				JOptionPane.showMessageDialog(null, picLabel, "Modèle", JOptionPane.PLAIN_MESSAGE, null);
-			}
-		});*/
-		
 
 		final JButton boutonBois = new JButton(new ImageIcon("./res/boutons/bloc_bois.png"));
 		boutonBois.setPreferredSize(new Dimension(40, 40));	
@@ -178,6 +157,7 @@ public class Selecteur extends JFrame {
 		
 		//TODO Ajouter ce bouton et ce label dans le panel 
 		final JButton boutonSon = new JButton(new ImageIcon("./res/boutons/speaker.png"));
+		boutonSon.setBackground(new Color(0,0,0,1));
 		boutonSon.setPreferredSize(new Dimension(40, 40));	
 		boutonSon.setToolTipText("Activer/Désactiver le son");
 		boutonSon.addActionListener(new ActionListener() {
