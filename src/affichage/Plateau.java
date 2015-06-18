@@ -7,17 +7,13 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.File;
-import java.io.IOException;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import sound.SonBois;
+import sound.SonMetal;
+import sound.SonBase;
 import utils.Properties;
 import cells.Base;
 import cells.Bois;
@@ -84,25 +80,6 @@ public class Plateau extends JPanel {
 							cell.infos(grille);
 						} else if (grille.getCellule(x / Cellule.SIZE,
 								y / Cellule.SIZE).isDispo()) {
-							
-							// TENTATIVE DE SON 
-							try {
-			                    AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File(
-			                            "/res/Son_Test.wav"));
-			                    // Get a sound clip resource.
-			                    Clip clip = AudioSystem.getClip();
-			                    // Open audio clip and load samples from the audio input stream.
-			                    clip.open(audioIn);
-			                } catch (UnsupportedAudioFileException excp) {
-			                    excp.printStackTrace();
-			                } catch (IOException excp) {
-			                    excp.printStackTrace();
-			                } catch (LineUnavailableException excp) {
-			                    excp.printStackTrace();
-			                }
-							
-							
-							
 							if (matiere.equals("base")) {
 								if (grille.containsBase()) {
 									JOptionPane.showMessageDialog(null, null,
@@ -112,6 +89,8 @@ public class Plateau extends JPanel {
 									grille.setCellule(x / Cellule.SIZE, y
 											/ Cellule.SIZE, new Base(x
 											/ Cellule.SIZE, y / Cellule.SIZE));
+									new SonBase().jouer();
+
 								}
 							} else if (matiere.equals("verre")) {
 								grille.setCellule(x / Cellule.SIZE, y
@@ -121,6 +100,8 @@ public class Plateau extends JPanel {
 								grille.setCellule(x / Cellule.SIZE, y
 										/ Cellule.SIZE, new Metal(x
 										/ Cellule.SIZE, y / Cellule.SIZE));
+								new SonMetal().jouer();
+
 							} else if (matiere.equals("pierre")) {
 								grille.setCellule(x / Cellule.SIZE, y
 										/ Cellule.SIZE, new Pierre(x
@@ -129,6 +110,8 @@ public class Plateau extends JPanel {
 								grille.setCellule(x / Cellule.SIZE, y
 										/ Cellule.SIZE, new Bois(x
 										/ Cellule.SIZE, y / Cellule.SIZE));
+								new SonBois().jouer();
+
 							} else if (matiere.equals("vide")) {
 								grille.setCellule(x / Cellule.SIZE, y
 										/ Cellule.SIZE, new Vide(x
