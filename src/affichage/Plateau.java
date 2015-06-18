@@ -11,9 +11,12 @@ import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import sound.SonBois;
-import sound.SonMetal;
 import sound.SonBase;
+import sound.SonBois;
+import sound.SonErase;
+import sound.SonMetal;
+import sound.SonPierre;
+import sound.SonVerre;
 import utils.Properties;
 import cells.Base;
 import cells.Bois;
@@ -96,6 +99,8 @@ public class Plateau extends JPanel {
 								grille.setCellule(x / Cellule.SIZE, y
 										/ Cellule.SIZE, new Verre(x
 										/ Cellule.SIZE, y / Cellule.SIZE));
+								new SonVerre().jouer();
+								
 							} else if (matiere.equals("metal")) {
 								grille.setCellule(x / Cellule.SIZE, y
 										/ Cellule.SIZE, new Metal(x
@@ -106,6 +111,8 @@ public class Plateau extends JPanel {
 								grille.setCellule(x / Cellule.SIZE, y
 										/ Cellule.SIZE, new Pierre(x
 										/ Cellule.SIZE, y / Cellule.SIZE));
+								new SonPierre().jouer();
+
 							} else if (matiere.equals("bois")) {
 								grille.setCellule(x / Cellule.SIZE, y
 										/ Cellule.SIZE, new Bois(x
@@ -116,6 +123,7 @@ public class Plateau extends JPanel {
 								grille.setCellule(x / Cellule.SIZE, y
 										/ Cellule.SIZE, new Vide(x
 										/ Cellule.SIZE, y / Cellule.SIZE));
+								new SonErase().jouer();
 							}
 						}
 						ecr.repaint();
