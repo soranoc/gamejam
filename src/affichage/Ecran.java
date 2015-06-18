@@ -24,8 +24,14 @@ public class Ecran extends JFrame {
 
 		super("House on Tree");
 
-		BufferedImage fond1 = ImageIO.read(new File("./res/fond1.png"));
-		this.setContentPane(new ImagePanel(fond1));
+		if(nbEx == -1){
+			BufferedImage fond1 = ImageIO.read(new File("./res/fondBac.png"));
+			this.setContentPane(new ImagePanel(fond1));
+		}
+		else{
+			BufferedImage fond1 = ImageIO.read(new File("./res/fond1.png"));
+			this.setContentPane(new ImagePanel(fond1));
+		}
 
 		setPreferredSize(new Dimension(725, 790));
 		setResizable(false);
