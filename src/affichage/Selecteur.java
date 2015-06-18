@@ -155,7 +155,7 @@ public class Selecteur extends JFrame {
 		this.add(boutons);
 
 		JLabel vide2 = new JLabel("");
-		vide2.setPreferredSize(new Dimension(250, 15));
+		vide2.setPreferredSize(new Dimension(250, 20));
 
 		this.add(vide2);
 
@@ -163,10 +163,9 @@ public class Selecteur extends JFrame {
 		panelSon.setBackground(new Color(0, 0, 0, 1));
 		panelSon.setPreferredSize(new Dimension(300, 50));
 		final JToggleButton boutonSon = new JToggleButton(new ImageIcon(
-				"./res/boutons/speaker.png"));
+				"./res/boutons/speakerOff.png"));
 		boutonSon
-				.setSelectedIcon(new ImageIcon("./res/boutons/speakerOff.png"));
-		boutonSon.setBackground(new Color(0, 0, 0, 1));
+				.setSelectedIcon(new ImageIcon("./res/boutons/speaker.png"));
 		boutonSon.setPreferredSize(new Dimension(40, 40));
 		boutonSon.setToolTipText("Activer/Désactiver le son");
 		boutonSon.addActionListener(new ActionListener() {
