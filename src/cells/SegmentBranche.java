@@ -150,5 +150,10 @@ public class SegmentBranche extends Cellule {
 
 		}
 	}
+	
+	@Override
+	public boolean isSupported(){
+		return true;
+	}
 
 }

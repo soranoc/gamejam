@@ -73,6 +73,8 @@ public class Plateau extends JPanel {
 				int y = e.getY();
 
 				if (fin == false) {
+					
+					//Est-ce que le carré cliqué est une branche?
 					try {
 						grille.getCellule(x / Cellule.SIZE, y / Cellule.SIZE)
 								.mouseClicked(e);
@@ -82,9 +84,16 @@ public class Plateau extends JPanel {
 									.getCellule(x / Cellule.SIZE, y
 											/ Cellule.SIZE);
 							cell.infos(grille);
+							
+							
+						//Sinon, est-elle dispo?
 						} else if (grille.getCellule(x / Cellule.SIZE,
 								y / Cellule.SIZE).isDispo()) {
+							
+							//Si oui, on teste la matière actuelle
 							if (matiere.equals("base")) {
+								
+								//On s'assure que la base soit unique
 								if (grille.containsBase()) {
 									JOptionPane.showMessageDialog(null, null,
 											"Base unique!",
@@ -93,6 +102,7 @@ public class Plateau extends JPanel {
 									grille.setCellule(x / Cellule.SIZE, y
 											/ Cellule.SIZE, new Base(x
 											/ Cellule.SIZE, y / Cellule.SIZE));
+									//On teste si il faut du son
 									if (sound == true) {
 										SonBase son = new SonBase();
 										son.jouer();
@@ -100,7 +110,10 @@ public class Plateau extends JPanel {
 									}
 
 								}
-							} else if (matiere.equals("verre")) {
+							} 
+							
+							//Le fonctionnement est le même partout ailleurs
+							else if (matiere.equals("verre")) {
 								grille.setCellule(x / Cellule.SIZE, y
 										/ Cellule.SIZE, new Verre(x
 										/ Cellule.SIZE, y / Cellule.SIZE));
@@ -110,7 +123,9 @@ public class Plateau extends JPanel {
 									son.arreter();
 								}
 
-							} else if (matiere.equals("metal")) {
+							} 
+							
+							else if (matiere.equals("metal")) {
 								grille.setCellule(x / Cellule.SIZE, y
 										/ Cellule.SIZE, new Metal(x
 										/ Cellule.SIZE, y / Cellule.SIZE));
@@ -120,7 +135,9 @@ public class Plateau extends JPanel {
 									son.arreter();
 								}
 
-							} else if (matiere.equals("pierre")) {
+							}
+							
+							else if (matiere.equals("pierre")) {
 								grille.setCellule(x / Cellule.SIZE, y
 										/ Cellule.SIZE, new Pierre(x
 										/ Cellule.SIZE, y / Cellule.SIZE));
@@ -130,7 +147,9 @@ public class Plateau extends JPanel {
 									son.arreter();
 								}
 
-							} else if (matiere.equals("bois")) {
+							}
+							
+							else if (matiere.equals("bois")) {
 								grille.setCellule(x / Cellule.SIZE, y
 										/ Cellule.SIZE, new Bois(x
 										/ Cellule.SIZE, y / Cellule.SIZE));
@@ -140,7 +159,9 @@ public class Plateau extends JPanel {
 									son.arreter();
 								}
 
-							} else if (matiere.equals("vide")) {
+							}
+							
+							else if (matiere.equals("vide")) {
 								grille.setCellule(x / Cellule.SIZE, y
 										/ Cellule.SIZE, new Vide(x
 										/ Cellule.SIZE, y / Cellule.SIZE));
@@ -152,6 +173,8 @@ public class Plateau extends JPanel {
 								}
 							}
 						}
+						
+						grille.replacerBlocs();
 						ecr.repaint();
 						repaint();
 
