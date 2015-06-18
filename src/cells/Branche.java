@@ -81,7 +81,7 @@ public class Branche {
 	}
 
 	public void infos(int i) {
-		JOptionPane.showMessageDialog(null, "" + getPoidsTotal() + "/"
+		JOptionPane.showMessageDialog(null, "Poids : " + getPoidsTotal() + "/"
 				+ getPoidsMax(), "Branche n°" + (i + 1),
 				JOptionPane.PLAIN_MESSAGE);
 

@@ -226,12 +226,14 @@ public class Grille {
 
 	public boolean isOkay() {
 		for (int i = 0; i < branches.length; ++i) {
-			if (branches[i] != null && !branches[i].isOkay()) {
-				casse(i);
-			}
-			if (branches[i] != null && branches[i].isAlmostBroken()) {
-				System.out.println("La branche n°" + (i + 1)
-						+ " est presque cassée!!");
+			if (branches[i] != null) {
+
+				if (!branches[i].isOkay()) {
+					casse(i);
+				}
+				if (branches[i] != null) {
+					branches[i].isAlmostBroken();
+				}
 			}
 		}
 		for (int i = 0; i < branches.length; ++i) {

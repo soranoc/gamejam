@@ -7,7 +7,14 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
+import java.io.IOException;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -17,9 +24,9 @@ import cells.Bois;
 import cells.Cellule;
 import cells.Metal;
 import cells.Pierre;
+import cells.SegmentBranche;
 import cells.Verre;
 import cells.Vide;
-import cells.SegmentBranche;
 
 public class Plateau extends JPanel {
 
@@ -77,6 +84,25 @@ public class Plateau extends JPanel {
 							cell.infos(grille);
 						} else if (grille.getCellule(x / Cellule.SIZE,
 								y / Cellule.SIZE).isDispo()) {
+							
+							// TENTATIVE DE SON 
+							try {
+			                    AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File(
+			                            "/res/Son_Test.wav"));
+			                    // Get a sound clip resource.
+			                    Clip clip = AudioSystem.getClip();
+			                    // Open audio clip and load samples from the audio input stream.
+			                    clip.open(audioIn);
+			                } catch (UnsupportedAudioFileException excp) {
+			                    excp.printStackTrace();
+			                } catch (IOException excp) {
+			                    excp.printStackTrace();
+			                } catch (LineUnavailableException excp) {
+			                    excp.printStackTrace();
+			                }
+							
+							
+							
 							if (matiere.equals("base")) {
 								if (grille.containsBase()) {
 									JOptionPane.showMessageDialog(null, null,
