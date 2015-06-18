@@ -2,64 +2,63 @@ package affichage;
 
 import grille.Grille;
 
+import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
+import utils.Properties;
 
-public class Ecran extends JFrame{
+public class Ecran extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private static final Grille grille = new Grille();
-	
+
 	public Ecran(int nbEx) throws IOException {
-		
+
 		super("House on Tree");
-		
-		
+
 		BufferedImage myImage = ImageIO.read(new File("./res/fond.png"));
 		this.setContentPane(new ImagePanel(myImage));
-		
-		
-		setPreferredSize(new Dimension(725,790));
+
+		setPreferredSize(new Dimension(725, 790));
 		setResizable(false);
 		
-		GridBagConstraints c = new GridBagConstraints();
-		setLayout(new GridBagLayout());
+		Container contentPane = getContentPane();
+        contentPane.setLayout(null);
+
+		Plateau p = new Plateau(grille, nbEx, this);
+		contentPane.add(p);
+
+		AnimatedGif ag = new AnimatedGif();
+		JPanel gif = ag.getPaintPane();
+
+		contentPane.add(gif);
 		
-		
-		
-//		JPanel pane = new JPanel();
-		//pane.setLayout(new GridLayout(2,1));
-		
-		Plateau p= new Plateau(grille, nbEx, this);	
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.gridx = 0;
-		c.gridy = 0;
-		this.add(p);
-		
+		@SuppressWarnings("unused")
+		Insets insets = contentPane.getInsets();
+		p.setBounds(75, 80, Properties.WIDTH * Properties.SIZE_CELLS, Properties.HEIGHT
+				* Properties.SIZE_CELLS);
+		gif.setBounds(550, 550, 153, 210);
+
 		createSelecteur(p);
-//		
-//		//Test
-//		System.out.println(grille.getBranches()[0].getPoidsRestant());
-//		System.out.println(grille.getBranches()[1].getPoidsRestant());
-		
+
 		pack();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}
-	
+
 	private void createSelecteur(Plateau p) throws IOException {
 		new Selecteur(p);
 	}
 
-	public static Grille getGrille(){
+	public static Grille getGrille() {
 		return grille;
 	}
 
