@@ -40,14 +40,13 @@ public abstract class Cellule {
 	public int getX() {
 		return x;
 	}
-	
 
 	/**
 	 * Modifie coordonnée X
 	 * 
 	 * @param x
 	 */
-	private void setX(int x) {
+	public void setX(int x) {
 		this.x = x;
 	}
 
@@ -63,7 +62,7 @@ public abstract class Cellule {
 	 * 
 	 * @param y
 	 */
-	private void setY(int y) {
+	public void setY(int y) {
 		this.y = y;
 	}
 
@@ -129,21 +128,30 @@ public abstract class Cellule {
 		if (isBranche()) {
 			return false;
 		}
-		if (isSupported()) {
-			return true;
+		if (isUnderBranche()) {
+			return false;
+		}
+		return true;
+	}
+
+	private boolean isUnderBranche() {
+		for (int y = getY() - 1; y >= 0; --y) {
+			if((Ecran.getGrille().getCellule(getX(), y).isBranche())){
+				return true;
+			}
 		}
 		return false;
 	}
 
-	private boolean isSupported() {
-		if((getX()==8 || getX()==9) && getY() == 11){
+	public boolean isSupported() {
+		if ((getX() == 8 || getX() == 9) && getY() == 11) {
 			return true;
 		}
-		if (getY() >= Grille.HEIGHT-1) {
+		if (getY() >= Grille.HEIGHT - 1) {
 			return false;
 		}
-		Cellule test = Ecran.getGrille().getCellule(getX(), getY()+1);
-		if (test.isBranche() || test.isBloc()){
+		Cellule test = Ecran.getGrille().getCellule(getX(), getY() + 1);
+		if (test.isBranche() || test.isBloc()) {
 			return true;
 		}
 		return false;

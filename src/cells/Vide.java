@@ -61,4 +61,9 @@ public class Vide extends Cellule{
 	public String getUrlImg() {
 		return "/res/vide.png";
 	}
+	
+	@Override
+	public boolean isSupported(){
+		return true;
+	}
 }

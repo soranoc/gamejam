@@ -1,19 +1,22 @@
 package affichage;
 
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Menu {
 	public Menu() {
 		final JFrame frame = new JFrame("House on Tree");
-		frame.setPreferredSize(new Dimension(300, 80));
 		frame.setLocation(300,300);
+		
+		JLabel label = new JLabel();
+		label.setText("Bienvenue sur House On Tree!\n Veuillez choisir un niveau");
+		
 		JPanel pane = new JPanel();
 		JButton niv1 = new JButton("1");
 		niv1.addActionListener(new ActionListener() {
@@ -57,6 +60,7 @@ public class Menu {
 				}
 			}
 		});
+		pane.add(label);
 		pane.add(niv1);
 		pane.add(niv2);
 		pane.add(niv3);
