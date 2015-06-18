@@ -9,7 +9,7 @@ public class SonMetal extends Thread {
 	private AudioClip sound;
 	
 	public SonMetal(){
-		url = this.getClass().getClassLoader().getResource("./res/sons/son_metal.wav");
+		url = this.getClass().getClassLoader().getResource("./res/sons/son_metal.wav"); 
 		sound = Applet.newAudioClip(url);
 	}
 	

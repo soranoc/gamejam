@@ -1,5 +1,6 @@
 package grille;
 
+import sound.SonBranche;
 import affichage.Plateau;
 import cells.Branche;
 import cells.Cellule;
@@ -122,6 +123,10 @@ public class Grille {
 		setSegment(seg18);
 		setSegment(seg19);
 
+		// Milieu de l'arbre
+		setSegment(new SegmentBranche(8, 11));
+		setSegment(new SegmentBranche(9, 11));
+
 		// Cases pour l'exemple
 		// setCellule(1, 4, new Metal(1, 4));
 		// setCellule(14, 7, new Base(14, 7));
@@ -185,7 +190,7 @@ public class Grille {
 	}
 
 	/**
-	 * TODO contains(Pattern p)
+	 * 
 	 * 
 	 * @param p
 	 *            Le pattern que l'on doit trouver
@@ -263,6 +268,8 @@ public class Grille {
 		if (branches[index] != null) {
 			branches[index].casse();
 			branches[index] = null;
+			if (Plateau.getSound() == true)
+				new SonBranche().jouer();
 		}
 	}
 
@@ -281,15 +288,11 @@ public class Grille {
 						 * TODO Tenter de réparer ça pour avoir une chute bloc
 						 * par bloc et pas un truc qui tombe tout d'un coup et
 						 * qui est sérieusement tout pourri(CtbLol, dixit
-						 * Clément le rigolo)
-						p.repaint();
-						p.repaintEcran();
-						try {
-							Thread.sleep(50);
-						} catch (InterruptedException e) {
-							System.err.println("Grille : replacerBloc : Thread qui plante");
-						}
-						*/
+						 * Clément le rigolo) p.repaint(); p.repaintEcran(); try
+						 * { Thread.sleep(50); } catch (InterruptedException e)
+						 * { System.err.println(
+						 * "Grille : replacerBloc : Thread qui plante"); }
+						 */
 					}
 				}
 			}

@@ -9,7 +9,7 @@ public class SonBois extends Thread {
 	private AudioClip sound;
 	
 	public SonBois(){
-		url = this.getClass().getClassLoader().getResource("./res/sons/son_bois.wav");
+		url = this.getClass().getClassLoader().getResource("./sons/son_bois.wav");
 		sound = Applet.newAudioClip(url);
 	}
 	
