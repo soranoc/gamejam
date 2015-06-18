@@ -36,7 +36,7 @@ public class Selecteur extends JFrame {
 		this.setPreferredSize(new Dimension(200, 600));
 		this.setLocationRelativeTo(getParent());
 		this.setAlwaysOnTop(true);
-		this.setTitle("Menu");
+		this.setTitle("Builder3000™");
 		this.setResizable(false);
 		this.setLayout(new FlowLayout(HEIGHT));
 

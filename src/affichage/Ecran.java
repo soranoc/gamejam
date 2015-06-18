@@ -20,12 +20,12 @@ public class Ecran extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private static final Grille grille = new Grille();
 
-	public Ecran(int nbEx) throws IOException {
+	public Ecran(int nbEx) throws IOException{
 
 		super("House on Tree");
 
-		BufferedImage myImage = ImageIO.read(new File("./res/fond.png"));
-		this.setContentPane(new ImagePanel(myImage));
+		BufferedImage fond1 = ImageIO.read(new File("./res/fond1.png"));
+		this.setContentPane(new ImagePanel(fond1));
 
 		setPreferredSize(new Dimension(725, 790));
 		setResizable(false);
@@ -45,7 +45,7 @@ public class Ecran extends JFrame {
 		Insets insets = contentPane.getInsets();
 		p.setBounds(75, 80, Properties.WIDTH * Properties.SIZE_CELLS, Properties.HEIGHT
 				* Properties.SIZE_CELLS);
-		gif.setBounds(550, 550, 153, 210);
+		gif.setBounds(550, 580, 120, 165);
 
 		createSelecteur(p);
 

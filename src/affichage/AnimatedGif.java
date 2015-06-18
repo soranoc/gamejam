@@ -27,16 +27,6 @@ public class AnimatedGif {
 				} catch (IllegalAccessException ex) {
 				} catch (UnsupportedLookAndFeelException ex) {
 				}
-
-				// JFrame frame = new JFrame("Test");
-				// JPanel j = new JPanel();
-				// frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				// frame.setLayout(new BorderLayout());
-				// j.add(new PaintPane());
-				// frame.add(j);
-				// frame.pack();
-				// frame.setLocationRelativeTo(null);
-				// frame.setVisible(true);
 			}
 		});
 	}
@@ -72,10 +62,10 @@ public class AnimatedGif {
 
 		@Override
 		protected void paintComponent(Graphics g) {
-			super.paintComponent(g); // This is very important!
+			super.paintComponent(g);
 			Image img = new ImageIcon(getClass().getResource(
 					"/res/fondrobot.png")).getImage();
-			g.drawImage(img, 0, 0, 153, 210, null);
+			g.drawImage(img, 0, 0, 120, 165, null);
 			int x = (getWidth() - image.getIconWidth()) / 2;
 			int y = (getHeight() - image.getIconHeight()) / 2;
 			image.paintIcon(this, g, x, y);
