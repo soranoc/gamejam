@@ -57,18 +57,9 @@ public class Menu {
 				}
 			}
 		});
-		JButton tuto = new JButton("Tuto");
-		tuto.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-					new Tuto();
-			}
-		});
 		pane.add(niv1);
 		pane.add(niv2);
 		pane.add(niv3);
-		pane.add(tuto);
 		frame.add(pane);
 
 		frame.pack();
