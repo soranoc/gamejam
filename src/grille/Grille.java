@@ -270,9 +270,7 @@ public class Grille {
 		while (done == false) {
 			done = true;
 			for (int i = 0; i < getWidth()-1; ++i) {
-				System.out.println("pew");
 				for (int j = 0; j < getHeight()-1; ++j) {
-					System.out.println("done = "+done+i+" "+j);
 					if (!grille[i][j].isSupported()) {
 						descendre(grille[i][j]);
 						done = false;
