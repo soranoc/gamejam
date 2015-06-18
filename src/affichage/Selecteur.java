@@ -178,9 +178,8 @@ public class Selecteur extends JFrame {
 		
 		//TODO Ajouter ce bouton et ce label dans le panel 
 		final JButton boutonSon = new JButton(new ImageIcon("./res/boutons/speaker.png"));
-		boutonVide.setPreferredSize(new Dimension(40, 40));	
-		boutonVide.setToolTipText("Activer/Désactiver le son");
-		// panelSon.add(boutonVide);
+		boutonSon.setPreferredSize(new Dimension(40, 40));	
+		boutonSon.setToolTipText("Activer/Désactiver le son");
 		boutonSon.addActionListener(new ActionListener() {
 
 			@Override
@@ -202,6 +201,8 @@ public class Selecteur extends JFrame {
 		else{
 			Label = new JLabel("Off");
 		}
+		// panelSon.add(boutonVide);
+		// panelSon.add(Label);
 		//END-TODO
 	}
 	
