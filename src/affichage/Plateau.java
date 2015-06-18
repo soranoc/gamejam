@@ -47,159 +47,230 @@ public class Plateau extends JPanel {
 		that = this;
 		ecr = e;
 		pat = new Pattern(nbEx);
-		addMouseListener(new MouseListener() {
+		if (nbEx == -1) {
+			addMouseListener(new MouseListener() {
 
-			@Override
-			public void mouseReleased(MouseEvent e) {
-			}
+				@Override
+				public void mouseReleased(MouseEvent e) {
+				}
 
-			@Override
-			public void mousePressed(MouseEvent e) {
-			}
+				@Override
+				public void mousePressed(MouseEvent e) {
+				}
 
-			@Override
-			public void mouseExited(MouseEvent e) {
-			}
+				@Override
+				public void mouseExited(MouseEvent e) {
+				}
 
-			@Override
-			public void mouseEntered(MouseEvent e) {
-			}
+				@Override
+				public void mouseEntered(MouseEvent e) {
+				}
 
-			/**
-			 * Event de clic On essaie de récupérer la Cellule à l'endroit du
-			 * clique -> Si elle existe, on appelle la méthode 'mouseClicked' de
-			 * la Cellule -> Si elle n'existe pas, on print l'exception
-			 */
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				int x = e.getX();
-				int y = e.getY();
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					int x = e.getX();
+					int y = e.getY();
 
-				if (fin == false) {
+					if (matiere.equals("verre")) {
+						grille.setCellule(x / Cellule.SIZE, y / Cellule.SIZE,
+								new Verre(x / Cellule.SIZE, y / Cellule.SIZE));
+					} else if (matiere.equals("base")) {
+						grille.setCellule(x / Cellule.SIZE, y / Cellule.SIZE,
+								new Base(x / Cellule.SIZE, y / Cellule.SIZE));
+					}
 
-					// Est-ce que le carré cliqué est une branche?
-					try {
-						grille.getCellule(x / Cellule.SIZE, y / Cellule.SIZE)
-								.mouseClicked(e);
-						if (grille.getCellule(x / Cellule.SIZE,
-								y / Cellule.SIZE).isBranche()) {
-							SegmentBranche cell = (SegmentBranche) grille
-									.getCellule(x / Cellule.SIZE, y
-											/ Cellule.SIZE);
-							cell.infos(grille);
+					else if (matiere.equals("metal")) {
+						grille.setCellule(x / Cellule.SIZE, y / Cellule.SIZE,
+								new Metal(x / Cellule.SIZE, y / Cellule.SIZE));
+					}
 
-							// Sinon, est-elle dispo?
-						} else if (grille.getCellule(x / Cellule.SIZE,
-								y / Cellule.SIZE).isDispo()) {
+					else if (matiere.equals("pierre")) {
+						grille.setCellule(x / Cellule.SIZE, y / Cellule.SIZE,
+								new Pierre(x / Cellule.SIZE, y / Cellule.SIZE));
+					}
 
-							// Si oui, on teste la matière actuelle
-							if (matiere.equals("base")) {
+					else if (matiere.equals("bois")) {
+						grille.setCellule(x / Cellule.SIZE, y / Cellule.SIZE,
+								new Bois(x / Cellule.SIZE, y / Cellule.SIZE));
+					}
 
-								// On s'assure que la base soit unique
-								if (grille.containsBase()) {
-									JOptionPane.showMessageDialog(null, null,
-											"Base unique!",
-											JOptionPane.PLAIN_MESSAGE, null);
-								} else {
+					else if (matiere.equals("vide")) {
+						grille.setCellule(x / Cellule.SIZE, y / Cellule.SIZE,
+								new Vide(x / Cellule.SIZE, y / Cellule.SIZE));
+					}
+					
+					ecr.repaint();
+					repaint();
+				}
+			});
+		} else {
+			addMouseListener(new MouseListener() {
+
+				@Override
+				public void mouseReleased(MouseEvent e) {
+				}
+
+				@Override
+				public void mousePressed(MouseEvent e) {
+				}
+
+				@Override
+				public void mouseExited(MouseEvent e) {
+				}
+
+				@Override
+				public void mouseEntered(MouseEvent e) {
+				}
+
+				/**
+				 * Event de clic On essaie de récupérer la Cellule à l'endroit
+				 * du clique -> Si elle existe, on appelle la méthode
+				 * 'mouseClicked' de la Cellule -> Si elle n'existe pas, on
+				 * print l'exception
+				 */
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					int x = e.getX();
+					int y = e.getY();
+
+					if (fin == false) {
+
+						// Est-ce que le carré cliqué est une branche?
+						try {
+							grille.getCellule(x / Cellule.SIZE,
+									y / Cellule.SIZE).mouseClicked(e);
+							if (grille.getCellule(x / Cellule.SIZE,
+									y / Cellule.SIZE).isBranche()) {
+								SegmentBranche cell = (SegmentBranche) grille
+										.getCellule(x / Cellule.SIZE, y
+												/ Cellule.SIZE);
+								cell.infos(grille);
+
+								// Sinon, est-elle dispo?
+							} else if (grille.getCellule(x / Cellule.SIZE,
+									y / Cellule.SIZE).isDispo()) {
+
+								// Si oui, on teste la matière actuelle
+								if (matiere.equals("base")) {
+
+									// On s'assure que la base soit unique
+									if (grille.containsBase()) {
+										JOptionPane
+												.showMessageDialog(
+														null,
+														null,
+														"Base unique!",
+														JOptionPane.PLAIN_MESSAGE,
+														null);
+									} else {
+										grille.setCellule(x / Cellule.SIZE, y
+												/ Cellule.SIZE, new Base(x
+												/ Cellule.SIZE, y
+												/ Cellule.SIZE));
+										// On teste si il faut du son
+										if (sound == true) {
+											SonBase son = new SonBase();
+											son.jouer();
+											son.arreter();
+										}
+
+									}
+								}
+
+								// Le fonctionnement est le même partout
+								// ailleurs
+								else if (matiere.equals("verre")) {
 									grille.setCellule(x / Cellule.SIZE, y
-											/ Cellule.SIZE, new Base(x
+											/ Cellule.SIZE, new Verre(x
 											/ Cellule.SIZE, y / Cellule.SIZE));
-									// On teste si il faut du son
 									if (sound == true) {
-										SonBase son = new SonBase();
+										SonVerre son = new SonVerre();
 										son.jouer();
 										son.arreter();
 									}
 
 								}
-							}
 
-							// Le fonctionnement est le même partout ailleurs
-							else if (matiere.equals("verre")) {
-								grille.setCellule(x / Cellule.SIZE, y
-										/ Cellule.SIZE, new Verre(x
-										/ Cellule.SIZE, y / Cellule.SIZE));
-								if (sound == true) {
-									SonVerre son = new SonVerre();
-									son.jouer();
-									son.arreter();
+								else if (matiere.equals("metal")) {
+									grille.setCellule(x / Cellule.SIZE, y
+											/ Cellule.SIZE, new Metal(x
+											/ Cellule.SIZE, y / Cellule.SIZE));
+									if (sound == true) {
+										SonMetal son = new SonMetal();
+										son.jouer();
+										son.arreter();
+									}
+
 								}
 
-							}
+								else if (matiere.equals("pierre")) {
+									grille.setCellule(x / Cellule.SIZE, y
+											/ Cellule.SIZE, new Pierre(x
+											/ Cellule.SIZE, y / Cellule.SIZE));
+									if (sound == true) {
+										SonPierre son = new SonPierre();
+										son.jouer();
+										son.arreter();
+									}
 
-							else if (matiere.equals("metal")) {
-								grille.setCellule(x / Cellule.SIZE, y
-										/ Cellule.SIZE, new Metal(x
-										/ Cellule.SIZE, y / Cellule.SIZE));
-								if (sound == true) {
-									SonMetal son = new SonMetal();
-									son.jouer();
-									son.arreter();
 								}
 
-							}
+								else if (matiere.equals("bois")) {
+									grille.setCellule(x / Cellule.SIZE, y
+											/ Cellule.SIZE, new Bois(x
+											/ Cellule.SIZE, y / Cellule.SIZE));
+									if (sound == true) {
+										SonBois son = new SonBois();
+										son.jouer();
+										son.arreter();
+									}
 
-							else if (matiere.equals("pierre")) {
-								grille.setCellule(x / Cellule.SIZE, y
-										/ Cellule.SIZE, new Pierre(x
-										/ Cellule.SIZE, y / Cellule.SIZE));
-								if (sound == true) {
-									SonPierre son = new SonPierre();
-									son.jouer();
-									son.arreter();
 								}
 
-							}
+								else if (matiere.equals("vide")) {
+									grille.setCellule(x / Cellule.SIZE, y
+											/ Cellule.SIZE, new Vide(x
+											/ Cellule.SIZE, y / Cellule.SIZE));
 
-							else if (matiere.equals("bois")) {
-								grille.setCellule(x / Cellule.SIZE, y
-										/ Cellule.SIZE, new Bois(x
-										/ Cellule.SIZE, y / Cellule.SIZE));
-								if (sound == true) {
-									SonBois son = new SonBois();
-									son.jouer();
-									son.arreter();
-								}
-
-							}
-
-							else if (matiere.equals("vide")) {
-								grille.setCellule(x / Cellule.SIZE, y
-										/ Cellule.SIZE, new Vide(x
-										/ Cellule.SIZE, y / Cellule.SIZE));
-
-								if (sound == true) {
-									SonErase son = new SonErase();
-									son.jouer();
-									son.arreter();
+									if (sound == true) {
+										SonErase son = new SonErase();
+										son.jouer();
+										son.arreter();
+									}
 								}
 							}
-						}
-						grille.replacerBlocs(that);
-						ecr.repaint();
-						repaint();
+							grille.replacerBlocs(that);
+							ecr.repaint();
+							repaint();
 
-						// repaint();
+							// repaint();
 
-						if (!grille.isOkay()) {
-							fin = true;
-							JOptionPane.showMessageDialog(null, null,
-									"Défaite...", JOptionPane.PLAIN_MESSAGE,
-									null); // TODO Ajouter image Robot
-						} else if (grille.containsBase()) {
-							if (grille.contains(pat)) {
+							if (!grille.isOkay()) {
 								fin = true;
 								JOptionPane.showMessageDialog(null, null,
-										"Victoire!", JOptionPane.PLAIN_MESSAGE,
-										null); // TODO Ajouter image Robot
+										"Défaite...",
+										JOptionPane.PLAIN_MESSAGE, null); // TODO
+																			// Ajouter
+																			// image
+																			// Robot
+							} else if (grille.containsBase()) {
+								if (grille.contains(pat)) {
+									fin = true;
+									JOptionPane.showMessageDialog(null, null,
+											"Victoire!",
+											JOptionPane.PLAIN_MESSAGE, null); // TODO
+																				// Ajouter
+																				// image
+																				// Robot
+								}
 							}
+						} catch (ArrayIndexOutOfBoundsException ex) {
+							System.err.println(ex.getMessage());
 						}
-					} catch (ArrayIndexOutOfBoundsException ex) {
-						System.err.println(ex.getMessage());
 					}
 				}
-			}
-		});
+			});
+		}
 	}
 
 	/**
@@ -242,10 +313,10 @@ public class Plateau extends JPanel {
 				grille.getCellule(i, j).paint(g);
 	}
 
-	public void repaintEcran(){
+	public void repaintEcran() {
 		ecr.repaint();
 	}
-	
+
 	public String getMatiere() {
 		return matiere;
 	}

@@ -19,8 +19,8 @@ public class Pattern extends JPanel{
 	
 	private int xBase;
 	private int yBase;
-	private int w;
-	private int h;
+	private int w=4;
+	private int h=4;
 	private Cellule[][] pattern;
 	private int nbEx;
 
@@ -186,6 +186,9 @@ public class Pattern extends JPanel{
 			
 			setPreferredSize(new Dimension(170,230));
 
+		}
+		else{
+			setPreferredSize(new Dimension(170, 230));
 		}
 		
 	}
