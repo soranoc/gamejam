@@ -147,7 +147,7 @@ public class Selecteur extends JFrame {
 			}
 		});
 		
-		final JButton boutonVide = new JButton(new ImageIcon("./res/boutons/vide.png"));
+		final JButton boutonVide = new JButton(new ImageIcon("./res/boutons/bloc_vide.png"));
 		boutonVide.setPreferredSize(new Dimension(40, 40));	
 		boutonVide.setToolTipText("Vide");
 		boutons3.add(boutonVide);

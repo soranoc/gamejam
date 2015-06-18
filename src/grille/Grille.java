@@ -126,7 +126,8 @@ public class Grille {
 		// setCellule(14, 4, new Bois(14, 4));
 		// setCellule(14, 3, new Bois(14, 3));
 	}
-
+	
+	
 	/**
 	 * Modifie la cellule à la coordonnée {x,y} par la cellule en paramètre
 	 * 
