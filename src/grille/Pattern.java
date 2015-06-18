@@ -41,22 +41,7 @@ public class Pattern extends JPanel{
 		}
 		pattern = new Cellule[w][h];
 		fill();
-	}
-
-	public Pattern(int nbEx, int xBase, int yBase) {
-		
-		this.setXBase(xBase);
-		this.setYBase(yBase);
-		if (nbEx==1){
-			w=3;
-			h=4;
-		}
-		else if (nbEx ==2){
-			w=4;
-			h=4;
-		}
-		pattern = new Cellule[w][h];
-		fill();
+		getExemple();
 	}
 
 	private void fill() {
@@ -120,7 +105,7 @@ public class Pattern extends JPanel{
 	/**
 	 * Crée un pattern qui correspond à l'exemple de grille
 	 */
-	public void getExemple() {
+	private void getExemple() {
 		if (nbEx == 1) {
 			this.setXBase(1);
 			this.setYBase(3);

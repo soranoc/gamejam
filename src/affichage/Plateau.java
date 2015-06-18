@@ -36,7 +36,6 @@ public class Plateau extends JPanel{
 	private Plateau(int nbEx, Ecran e) {
 		ecr=e;
 		pat = new Pattern(nbEx);
-		pat.getExemple();
 		addMouseListener(new MouseListener() {
 
 			@Override
