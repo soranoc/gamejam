@@ -128,14 +128,17 @@ public abstract class Cellule {
 		if (isBranche()) {
 			return false;
 		}
-		if (isUnderBranche()) {
-			return false;
+		if (isOverBranche()) {
+			return true;
 		}
-		return true;
+		if ((getX() == 8 || getX() == 9)) {
+			return true;
+		}
+		return false;
 	}
 
-	private boolean isUnderBranche() {
-		for (int y = getY() - 1; y >= 0; --y) {
+	private boolean isOverBranche() {
+		for (int y = getY() + 1; y <Ecran.getGrille().getHeight(); ++y) {
 			if((Ecran.getGrille().getCellule(getX(), y).isBranche())){
 				return true;
 			}
@@ -144,9 +147,6 @@ public abstract class Cellule {
 	}
 
 	public boolean isSupported() {
-		if ((getX() == 8 || getX() == 9) && getY() == 11) {
-			return true;
-		}
 		if (getY() >= Grille.HEIGHT - 1) {
 			return false;
 		}

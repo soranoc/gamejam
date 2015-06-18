@@ -15,7 +15,7 @@ public class Menu {
 		frame.setLocation(300,300);
 		
 		JLabel label = new JLabel();
-		label.setText("Bienvenue sur House On Tree!\n Veuillez choisir un niveau");
+		label.setText("Sélection du niveau");
 		
 		JPanel pane = new JPanel();
 		JButton niv1 = new JButton("1");

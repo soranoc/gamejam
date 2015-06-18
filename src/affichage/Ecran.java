@@ -61,5 +61,6 @@ public class Ecran extends JFrame {
 	public static Grille getGrille() {
 		return grille;
 	}
+	
 
 }
