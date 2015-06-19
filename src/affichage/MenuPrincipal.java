@@ -63,7 +63,12 @@ public class MenuPrincipal {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				new Menu();
+				try {
+					new Menu();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				frame.setVisible(false);
 				frame.dispose();
 			}
@@ -95,7 +100,12 @@ public class MenuPrincipal {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				new Menu();
+				try {
+					new Menu();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				frame.setVisible(false);
 				frame.dispose();
 			}
