@@ -29,13 +29,13 @@ public class Pattern extends JPanel {
 	public Pattern(int nbEx) {
 
 		this.nbEx = nbEx;
-		if (nbEx == 1) {
+		if (nbEx == 1 || nbEx == -2) {
 			w = 3;
 			h = 4;
-		} else if (nbEx == 2) {
+		} else if (nbEx == 2 || nbEx ==-3) {
 			w = 4;
 			h = 4;
-		} else if (nbEx == 3) {
+		} else if (nbEx == 3||nbEx ==-4) {
 			w = 5;
 			h = 6;
 		}
@@ -227,11 +227,11 @@ public class Pattern extends JPanel {
 		}
 	}
 
-	public Cellule[][] getEmptyPattern() {
+	public Cellule[][] getEmptyPat() {
 		return emptyPattern;
 	}
 
-	public void setEmptyPattern(Cellule[][] emptyPattern) {
+	public void setEmptyPat(Cellule[][] emptyPattern) {
 		this.emptyPattern = emptyPattern;
 	}
 
@@ -245,5 +245,13 @@ public class Pattern extends JPanel {
 	
 	public void noDisplay(){
 		setPaintVide(true);
+	}
+	
+	public void display(){
+		setPaintVide(false);
+	}
+	
+	public Pattern getEmptyPattern(){
+		return new Pattern(-1);
 	}
 }

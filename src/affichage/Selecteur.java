@@ -144,36 +144,14 @@ public class Selecteur extends JFrame {
 				Plateau.setMatiere("vide");
 			}
 		});
-		
 
-		
-		if (p.getNbEx() < -1) {
-			popup = new JWindow();
-			popup.setLocation(300, 150);
-			popup.setAlwaysOnTop(true);
-			popup.setBackground(Color.GREEN);
-			popup.add(pat);
-			popup.pack();
-			popup.setVisible(true);
-
-			new Thread() {
-				@Override
-				public void run() {
-					try {
-						sleep(2500);
-						popup.dispose();
-					} catch (InterruptedException e) {
-						System.err.println(e.getMessage());
-					}
-
-				}
-			}.start();
-			pat.noDisplay();
-		}
-		
 		this.add(infosLabel);
 		this.add(vide);
-		this.add(pat);
+		if (p.getNbEx() < -1) {
+			this.add(pat.getEmptyPattern());
+		} else {
+			this.add(pat);
+		}
 		this.add(boutonsLabel);
 
 		boutons.add(boutons1, BorderLayout.NORTH);
@@ -214,6 +192,28 @@ public class Selecteur extends JFrame {
 		pack();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
+
+		if (p.getNbEx() < -1) {
+			popup = new JWindow();
+			popup.setLocation(300, 150);
+			popup.setAlwaysOnTop(true);
+			popup.add(pat);
+			popup.pack();
+			popup.setVisible(true);
+			new Thread() {
+				@Override
+				public void run() {
+					try {
+						sleep(2500);
+						popup.dispose();
+					} catch (InterruptedException e) {
+						System.err.println(e.getMessage());
+					}
+
+				}
+			}.start();
+
+		}
 
 	}
 
