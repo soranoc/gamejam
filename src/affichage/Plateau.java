@@ -68,6 +68,12 @@ public class Plateau extends JPanel {
 		pat = new Pattern(nbEx);
 		if (nbEx == -1) {
 			addMouseListener(new MouseListener() {
+				private SonBase sonBase;
+				private SonBois sonBois;
+				private SonErase sonErase;
+				private SonMetal sonMetal;
+				private SonPierre sonPierre;
+				private SonVerre sonVerre;
 
 				@Override
 				public void mouseReleased(MouseEvent e) {
@@ -93,29 +99,73 @@ public class Plateau extends JPanel {
 					if (matiere.equals("verre")) {
 						grille.setCellule(x / Cellule.SIZE, y / Cellule.SIZE,
 								new Verre(x / Cellule.SIZE, y / Cellule.SIZE));
+						if (sound == true) {
+							if (sonVerre == null) {
+								sonVerre = new SonVerre();
+							}
+							sonVerre.jouer();
+							// sonVerre.arreter();
+						}
+						
 					} else if (matiere.equals("base")) {
 						grille.setCellule(x / Cellule.SIZE, y / Cellule.SIZE,
 								new Base(x / Cellule.SIZE, y / Cellule.SIZE));
+						if (sound == true) {
+							if (sonBase == null) {
+								sonBase = new SonBase();
+							}
+							sonBase.jouer();
+							// sonBase.arreter();
+						}
 					}
+					
 
 					else if (matiere.equals("metal")) {
 						grille.setCellule(x / Cellule.SIZE, y / Cellule.SIZE,
 								new Metal(x / Cellule.SIZE, y / Cellule.SIZE));
+						if (sound == true) {
+							if (sonMetal == null) {
+								sonMetal = new SonMetal();
+							}
+							sonMetal.jouer();
+							// sonMetal.arreter();
+						}
 					}
 
 					else if (matiere.equals("pierre")) {
 						grille.setCellule(x / Cellule.SIZE, y / Cellule.SIZE,
 								new Pierre(x / Cellule.SIZE, y / Cellule.SIZE));
+						if (sound == true) {
+							if (sonPierre == null) {
+								sonPierre = new SonPierre();
+							}
+							sonPierre.jouer();
+							// sonPierre.arreter();
+						}
 					}
 
 					else if (matiere.equals("bois")) {
 						grille.setCellule(x / Cellule.SIZE, y / Cellule.SIZE,
 								new Bois(x / Cellule.SIZE, y / Cellule.SIZE));
+						if (sound == true) {
+							if (sonBois == null) {
+								sonBois = new SonBois();
+							}
+							sonBois.jouer();
+							// sonBois.arreter();
+						}
 					}
 
 					else if (matiere.equals("vide")) {
 						grille.setCellule(x / Cellule.SIZE, y / Cellule.SIZE,
 								new Vide(x / Cellule.SIZE, y / Cellule.SIZE));
+						if (sound == true) {
+							if (sonErase == null) {
+								sonErase = new SonErase();
+							}
+							sonErase.jouer();
+							// sonErase.arreter();
+						}
 					}
 
 					ecr.repaint();
