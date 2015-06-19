@@ -22,7 +22,9 @@ public class Pattern extends JPanel {
 	private int w = 4;
 	private int h = 4;
 	private Cellule[][] pattern;
+	private Cellule[][] emptyPattern = new Cellule[4][4];
 	private int nbEx;
+	private boolean paintVide=false;
 
 	public Pattern(int nbEx) {
 
@@ -46,6 +48,11 @@ public class Pattern extends JPanel {
 		for (int i = 0; i < w; ++i) {
 			for (int j = 0; j < h; ++j) {
 				pattern[i][j] = new Vide(i, j);
+			}
+		}
+		for (int i = 0; i < 4; ++i) {
+			for (int j = 0; j < 4; ++j) {
+				emptyPattern[i][j] = new Vide(i, j);
 			}
 		}
 
@@ -104,7 +111,7 @@ public class Pattern extends JPanel {
 	 * Crée un pattern qui correspond à l'exemple de grille
 	 */
 	private void getExemple() {
-		if (nbEx == 1) {
+		if (nbEx == 1 || nbEx == -2) {
 			this.setXBase(1);
 			this.setYBase(3);
 
@@ -123,7 +130,7 @@ public class Pattern extends JPanel {
 
 			setPreferredSize(new Dimension(150, 230));
 
-		} else if (nbEx == 2) {
+		} else if (nbEx == 2 || nbEx == -3) {
 			this.setXBase(0);
 			this.setYBase(3);
 			this.setCase(new Bois(0, 1));
@@ -146,7 +153,7 @@ public class Pattern extends JPanel {
 
 			setPreferredSize(new Dimension(160, 230));
 
-		} else if (nbEx == 3) {
+		} else if (nbEx == 3 || nbEx ==-4) {
 			this.setXBase(2);
 			this.setYBase(5);
 
@@ -205,14 +212,38 @@ public class Pattern extends JPanel {
 
 	@Override
 	public void paint(Graphics g) {
-		if (nbEx < -1) {
-
-		} else {
+		if (paintVide==false) {
 			for (int i = 0; i < pattern.length; i++) {
 				for (int j = 0; j < pattern[0].length; j++) {
 					pattern[i][j].paint(g);
 				}
 			}
+		}else{
+			for (int i = 0; i < 4; i++) {
+				for (int j = 0; j < 4; j++) {
+					emptyPattern[i][j].paint(g);
+				}
+			}
 		}
+	}
+
+	public Cellule[][] getEmptyPattern() {
+		return emptyPattern;
+	}
+
+	public void setEmptyPattern(Cellule[][] emptyPattern) {
+		this.emptyPattern = emptyPattern;
+	}
+
+	public boolean isPaintVide() {
+		return paintVide;
+	}
+
+	public void setPaintVide(boolean paintVide) {
+		this.paintVide = paintVide;
+	}
+	
+	public void noDisplay(){
+		setPaintVide(true);
 	}
 }

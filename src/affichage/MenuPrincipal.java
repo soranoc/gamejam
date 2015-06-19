@@ -101,7 +101,7 @@ public class MenuPrincipal {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					new Menu();
+					new Ecran(-2);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

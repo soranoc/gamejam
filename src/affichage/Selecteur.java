@@ -19,9 +19,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
+import javax.swing.JWindow;
 
 public class Selecteur extends JFrame {
 	private Plateau p;
+	protected JWindow popup;
 	/**
 	 * 
 	 */
@@ -34,7 +36,7 @@ public class Selecteur extends JFrame {
 
 		this.setP(p);
 		this.setPreferredSize(new Dimension(200, 600));
-		this.setLocation(750,150);
+		this.setLocation(750, 150);
 		this.setAlwaysOnTop(true);
 		this.setTitle("Builder3000™");
 		this.setResizable(false);
@@ -142,7 +144,33 @@ public class Selecteur extends JFrame {
 				Plateau.setMatiere("vide");
 			}
 		});
+		
 
+		
+		if (p.getNbEx() < -1) {
+			popup = new JWindow();
+			popup.setLocation(300, 150);
+			popup.setAlwaysOnTop(true);
+			popup.setBackground(Color.GREEN);
+			popup.add(pat);
+			popup.pack();
+			popup.setVisible(true);
+
+			new Thread() {
+				@Override
+				public void run() {
+					try {
+						sleep(2500);
+						popup.dispose();
+					} catch (InterruptedException e) {
+						System.err.println(e.getMessage());
+					}
+
+				}
+			}.start();
+			pat.noDisplay();
+		}
+		
 		this.add(infosLabel);
 		this.add(vide);
 		this.add(pat);
