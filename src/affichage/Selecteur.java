@@ -195,9 +195,18 @@ public class Selecteur extends JFrame {
 
 		if (p.getNbEx() < -1) {
 			popup = new JWindow();
+			BufferedImage fond = ImageIO.read(new File("./res/fondPopup.png"));
+			popup.setContentPane(new ImagePanel(fond));
+			popup.setPreferredSize(new Dimension(210,243));
 			popup.setLocation(300, 150);
+			FlowLayout flowl = new FlowLayout();
+			flowl.setHgap(70);
+			flowl.setVgap(50);
+			popup.setLayout(flowl);
+			
+			popup.add(pat); 
+			
 			popup.setAlwaysOnTop(true);
-			popup.add(pat);
 			popup.pack();
 			popup.setVisible(true);
 			new Thread() {

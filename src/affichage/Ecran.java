@@ -29,6 +29,10 @@ public class Ecran extends JFrame {
 			BufferedImage fond1 = ImageIO.read(new File("./res/fondBac.png"));
 			this.setContentPane(new ImagePanel(fond1));
 		}
+		else if (nbEx == -2){
+			BufferedImage fond1 = ImageIO.read(new File("./res/fondChrono.png"));
+			this.setContentPane(new ImagePanel(fond1));
+		}
 		else{
 			BufferedImage fond1 = ImageIO.read(new File("./res/fond1.png"));
 			this.setContentPane(new ImagePanel(fond1));
