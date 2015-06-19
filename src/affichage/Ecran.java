@@ -19,6 +19,7 @@ public class Ecran extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private static final Grille grille = new Grille();
+	private Selecteur sel;
 
 	public Ecran(int nbEx) throws IOException{
 
@@ -61,7 +62,11 @@ public class Ecran extends JFrame {
 	}
 
 	private void createSelecteur(Plateau p) throws IOException {
-		new Selecteur(p);
+		sel = new Selecteur(p);
+	}
+	
+	public Selecteur getSelecteur(){
+		return sel;
 	}
 
 	public static Grille getGrille() {

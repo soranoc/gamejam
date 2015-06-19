@@ -3,11 +3,23 @@ package affichage;
 import grille.Grille;
 import grille.Pattern;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -272,25 +284,96 @@ public class Plateau extends JPanel {
 
 							if (!grille.isOkay()) {
 								fin = true;
-								JOptionPane.showMessageDialog(null, null,
-										"Défaite...",
-										JOptionPane.PLAIN_MESSAGE, null); // TODO
-																			// Ajouter
-																			// image
-																			// Robot
+								final JFrame jw = new JFrame();
+								jw.setPreferredSize(new Dimension(300,170));
+								jw.setResizable(false);
+								BufferedImage fond = ImageIO.read(new File("./res/fondDefaite.png"));
+								jw.setContentPane(new ImagePanel(fond));
+								jw.setLocation(600, 300);
+								jw.setAlwaysOnTop(true);
+								jw.setLayout(new BorderLayout());
+								
+								JPanel jp = new JPanel(new FlowLayout());
+								jp.setPreferredSize(new Dimension(300,70));
+								jp.setBackground(new Color(0,0,0,1));
+								
+								JButton retour = new JButton(new ImageIcon(
+										"./res/boutons/boutonRetour.png"));
+								retour.setBackground(new Color(0,0,0,1));
+								retour.setPreferredSize(new Dimension(130,50));
+								retour.addActionListener(new ActionListener() {
+
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										try {
+											new MenuPrincipal();
+										} catch (IOException e) {
+											e.printStackTrace();
+										}
+										jw.setVisible(false);
+										jw.dispose();
+										ecr.getSelecteur().setVisible(false);
+										ecr.getSelecteur().dispose();
+										ecr.setVisible(false);
+										ecr.dispose();
+									}
+								});
+								
+								jp.add(retour);
+								jw.add(jp, BorderLayout.SOUTH);
+								jw.pack();
+								jw.setVisible(true);
+								
+								
 							} else if (grille.containsBase()) {
 								if (grille.contains(pat)) {
 									fin = true;
-									JOptionPane.showMessageDialog(null, null,
-											"Victoire!",
-											JOptionPane.PLAIN_MESSAGE, null); // TODO
-																				// Ajouter
-																				// image
-																				// Robot
+									final JFrame jw = new JFrame();
+									jw.setPreferredSize(new Dimension(300,170));
+									jw.setResizable(false);
+									BufferedImage fond = ImageIO.read(new File("./res/fondVictoire.png"));
+									jw.setContentPane(new ImagePanel(fond));
+									jw.setLocation(600, 300);
+									jw.setAlwaysOnTop(true);
+									jw.setLayout(new BorderLayout());
+									
+									JPanel jp = new JPanel(new FlowLayout());
+									jp.setPreferredSize(new Dimension(300,70));
+									jp.setBackground(new Color(0,0,0,1));
+									
+									JButton retour = new JButton(new ImageIcon(
+											"./res/boutons/boutonRetour.png"));
+									retour.setBackground(new Color(0,0,0,1));
+									retour.setPreferredSize(new Dimension(130,50));
+									retour.addActionListener(new ActionListener() {
+
+										@Override
+										public void actionPerformed(ActionEvent arg0) {
+											try {
+												new MenuPrincipal();
+											} catch (IOException e) {
+												e.printStackTrace();
+											}
+											jw.setVisible(false);
+											jw.dispose();
+											ecr.getSelecteur().setVisible(false);
+											ecr.getSelecteur().dispose();
+											ecr.setVisible(false);
+											ecr.dispose();
+										}
+									});
+									
+									jp.add(retour);
+									jw.add(jp, BorderLayout.SOUTH);
+									jw.pack();
+									jw.setVisible(true);
 								}
 							}
 						} catch (ArrayIndexOutOfBoundsException ex) {
 							System.err.println(ex.getMessage());
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
 						}
 					}
 				}

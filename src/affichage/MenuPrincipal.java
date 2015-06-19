@@ -1,5 +1,7 @@
 package affichage;
 
+import grille.Grille;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -19,6 +21,8 @@ import javax.swing.JPanel;
 
 public class MenuPrincipal {
 	public MenuPrincipal() throws IOException {
+		
+		Grille.reInit();
 		
 		final JFrame frame = new JFrame("House on Tree");
 		frame.setPreferredSize(new Dimension(500, 600));

@@ -1,6 +1,7 @@
 package grille;
 
 import sound.SonBranche;
+import affichage.Ecran;
 import affichage.Plateau;
 import cells.Branche;
 import cells.Cellule;
@@ -37,6 +38,14 @@ public class Grille {
 			for (int j = 0; j < getHeight(); j++)
 				grille[i][j] = new Vide(i, j);
 		getExemple();
+	}
+	
+	
+	public static void reInit(){
+		for (int i = 0; i < WIDTH; i++)
+			for (int j = 0; j < HEIGHT; j++)
+				Ecran.getGrille().grille[i][j] = new Vide(i, j);
+		Ecran.getGrille().getExemple();
 	}
 
 	/**
