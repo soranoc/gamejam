@@ -37,7 +37,12 @@ public class Plateau extends JPanel {
 	private boolean fin = false;
 	private static boolean sound = true;
 	private Ecran ecr;
-	//private static SonAmbiance musique =new SonAmbiance();// TODO Faire fonctionner la musique sans qu'elle fasse tout planter
+	private int nbEx;
+	//private static SonAmbiance musique = new SonAmbiance();// TODO Faire
+															// fonctionner la
+															// musique sans
+															// qu'elle fasse
+															// tout planter
 
 	protected final Plateau that;
 
@@ -46,6 +51,7 @@ public class Plateau extends JPanel {
 	 */
 	private Plateau(int nbEx, Ecran e) {
 		that = this;
+		this.nbEx = nbEx;
 		ecr = e;
 		pat = new Pattern(nbEx);
 		if (nbEx == -1) {
@@ -100,7 +106,6 @@ public class Plateau extends JPanel {
 								new Vide(x / Cellule.SIZE, y / Cellule.SIZE));
 					}
 
-				    					
 					ecr.repaint();
 					repaint();
 				}
@@ -181,7 +186,7 @@ public class Plateau extends JPanel {
 												sonBase = new SonBase();
 											}
 											sonBase.jouer();
-											//sonBase.arreter();
+											// sonBase.arreter();
 										}
 
 									}
@@ -198,7 +203,7 @@ public class Plateau extends JPanel {
 											sonVerre = new SonVerre();
 										}
 										sonVerre.jouer();
-										//sonVerre.arreter();
+										// sonVerre.arreter();
 									}
 
 								}
@@ -212,7 +217,7 @@ public class Plateau extends JPanel {
 											sonMetal = new SonMetal();
 										}
 										sonMetal.jouer();
-										//sonMetal.arreter();
+										// sonMetal.arreter();
 									}
 
 								}
@@ -222,11 +227,11 @@ public class Plateau extends JPanel {
 											/ Cellule.SIZE, new Pierre(x
 											/ Cellule.SIZE, y / Cellule.SIZE));
 									if (sound == true) {
-										if(sonPierre==null){
-											sonPierre= new SonPierre();
+										if (sonPierre == null) {
+											sonPierre = new SonPierre();
 										}
 										sonPierre.jouer();
-										//sonPierre.arreter();
+										// sonPierre.arreter();
 									}
 
 								}
@@ -236,11 +241,11 @@ public class Plateau extends JPanel {
 											/ Cellule.SIZE, new Bois(x
 											/ Cellule.SIZE, y / Cellule.SIZE));
 									if (sound == true) {
-										if(sonBois==null){
-											sonBois= new SonBois();
+										if (sonBois == null) {
+											sonBois = new SonBois();
 										}
 										sonBois.jouer();
-										//sonBois.arreter();
+										// sonBois.arreter();
 									}
 
 								}
@@ -251,11 +256,11 @@ public class Plateau extends JPanel {
 											/ Cellule.SIZE, y / Cellule.SIZE));
 
 									if (sound == true) {
-										if(sonErase==null){
+										if (sonErase == null) {
 											sonErase = new SonErase();
 										}
 										sonErase.jouer();
-										//sonErase.arreter();
+										// sonErase.arreter();
 									}
 								}
 							}
@@ -349,16 +354,19 @@ public class Plateau extends JPanel {
 		return pat;
 	}
 
+	public int getNbEx() {
+		return nbEx;
+	}
+
 	public static boolean getSound() {
 		return sound;
 	}
 
 	public static void setSound(boolean son) {
 		sound = son;
-//		if(son = true){
+//		if (son = true) {
 //			musique.start();
-//		}
-//		else{
+//		} else {
 //			musique.interrupt();
 //		}
 	}
